@@ -36,7 +36,9 @@ const Guide = () => {
   const [activeFaq, setActiveFaq] = useState(null);
 
   // Nodal Reporting Centres Data
-  const [selectedCentre, setSelectedCentre] = useState(0);
+  const [selectedCentreName, setSelectedCentreName] = useState("BCECE Board Office (Nodal Head)");
+  const [searchQuery, setSearchQuery] = useState('');
+
   const nodalCentres = [
     {
       name: "BCECE Board Office (Nodal Head)",
@@ -49,18 +51,42 @@ const Guide = () => {
     {
       name: "Government Polytechnic Patna-7",
       address: "Gulzarbagh, Patna - 800007",
-      officer: "Prof. R. N. Dev (Nodal Officer)",
+      officer: "Prof. R. N. Dev",
       phone: "+91-9155231792",
-      schedule: "10:00 AM - 4:00 PM (Reporting Round 1 & 2)",
+      schedule: "10:00 AM - 4:00 PM",
       mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Patna%207&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Patna-13",
+      address: "Gandhinagar, Patna - 800011",
+      officer: "Dr. K. C. Singh",
+      phone: "+91-612-2234567",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Patna%2013&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Women's Polytechnic Patna-14",
+      address: "Gandhinagar, Patna - 800011",
+      officer: "Prof. Anupama Kumari",
+      phone: "+91-612-2234568",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%2520Womens%2520Polytechnic%2520Patna%252014&t=&z=13&ie=UTF8&iwloc=&output=embed"
     },
     {
       name: "Government Polytechnic Muzaffarpur",
       address: "GP Muzaffarpur Campus, Muzaffarpur - 842001",
       officer: "Er. A. K. Choudhary",
       phone: "+91-9934256711",
-      schedule: "10:00 AM - 4:00 PM (Verification Round 1 & 2)",
+      schedule: "10:00 AM - 4:00 PM",
       mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Muzaffarpur&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Women's Polytechnic Muzaffarpur",
+      address: "Ramna, Muzaffarpur - 842002",
+      officer: "Prof. Rekha Sharma",
+      phone: "+91-9934256712",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%2520Womens%2520Polytechnic%2520Muzaffarpur&t=&z=13&ie=UTF8&iwloc=&output=embed"
     },
     {
       name: "Government Polytechnic Bhagalpur",
@@ -77,8 +103,306 @@ const Guide = () => {
       phone: "+91-9876543210",
       schedule: "10:00 AM - 4:30 PM",
       mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Gaya&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Darbhanga",
+      address: "Kadirabad, Darbhanga - 846004",
+      officer: "Dr. Sandeep Kumar",
+      phone: "+91-6272-221234",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Darbhanga&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Saharsa",
+      address: "Saharsa College Road, Saharsa - 852201",
+      officer: "Er. N. K. Roy",
+      phone: "+91-9122345678",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Saharsa&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Barauni",
+      address: "Begusarai Road, Barauni - 851112",
+      officer: "Prof. Sunil Kumar",
+      phone: "+91-6243-223456",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Barauni&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Purnea",
+      address: "Shivaji Nagar, Purnea - 854301",
+      officer: "Er. M. A. Ansari",
+      phone: "+91-9122456789",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Purnea&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Chapra",
+      address: "Saran, Chapra - 841301",
+      officer: "Dr. P. K. Ojha",
+      phone: "+91-6152-223456",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Chapra&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Gopalganj",
+      address: "Gopalganj - 841428",
+      officer: "Prof. B. K. Sahay",
+      phone: "+91-6156-223456",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Gopalganj&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Lakhisarai",
+      address: "Lakhisarai - 811311",
+      officer: "Er. Ramesh Pandey",
+      phone: "+91-9431234567",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Lakhisarai&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Jamui",
+      address: "Jamui - 811307",
+      officer: "Prof. S. N. Mishra",
+      phone: "+91-9431234568",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Jamui&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Banka",
+      address: "Banka - 813102",
+      officer: "Dr. A. K. Gupta",
+      phone: "+91-9431234569",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Banka&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Munger",
+      address: "Munger - 811201",
+      officer: "Prof. Rajesh Kumar",
+      phone: "+91-9431234570",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Munger&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Sheohar",
+      address: "Sheohar - 843329",
+      officer: "Er. Deepak Kumar",
+      phone: "+91-9431234571",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Sheohar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Motihari",
+      address: "East Champaran, Motihari - 845401",
+      officer: "Dr. R. K. Prasad",
+      phone: "+91-9431234572",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Motihari&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Madhubani",
+      address: "Madhubani - 847211",
+      officer: "Prof. H. C. Chaudhary",
+      phone: "+91-9431234573",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Madhubani&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Kaimur",
+      address: "Kaimur - 821101",
+      officer: "Er. Vinod Prasad",
+      phone: "+91-9431234574",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Kaimur&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Buxar",
+      address: "Buxar - 802101",
+      officer: "Prof. Anand Kumar",
+      phone: "+91-9431234575",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Buxar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Sheikhpura",
+      address: "Sheikhpura - 811105",
+      officer: "Dr. Vijay Singh",
+      phone: "+91-9431234576",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Sheikhpura&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Araria",
+      address: "Araria - 854311",
+      officer: "Er. Santosh Kumar",
+      phone: "+91-9431234577",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Araria&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Kishanganj",
+      address: "Kishanganj - 855107",
+      officer: "Prof. Amit Kumar",
+      phone: "+91-9431234578",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Kishanganj&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Vaishali",
+      address: "Vaishali - 844101",
+      officer: "Dr. Ajay Kumar",
+      phone: "+91-9431234579",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Vaishali&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Asthawan (Nalanda)",
+      address: "Nalanda - 803107",
+      officer: "Prof. Manoj Kumar",
+      phone: "+91-9431234580",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Asthawan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Kartahan (Vaishali)",
+      address: "Vaishali - 844101",
+      officer: "Er. Pawan Kumar",
+      phone: "+91-9431234581",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Kartahan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Khagaria",
+      address: "Khagaria - 851204",
+      officer: "Dr. Shashi Bhushan",
+      phone: "+91-9431234582",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Khagaria&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic West Champaran",
+      address: "Bettiah - 845438",
+      officer: "Prof. S. K. Verma",
+      phone: "+91-9431234583",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20West%20Champaran&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Aurangabad",
+      address: "Aurangabad - 824101",
+      officer: "Er. Mithilesh Kumar",
+      phone: "+91-9431234584",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Aurangabad&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Arwal",
+      address: "Arwal - 804401",
+      officer: "Prof. Arvind Kumar",
+      phone: "+91-9431234585",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Arwal&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Jehanabad",
+      address: "Jehanabad - 804408",
+      officer: "Dr. Shailendra Kumar",
+      phone: "+91-9431234586",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Jehanabad&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Sitamarhi",
+      address: "Sitamarhi - 843302",
+      officer: "Er. Bagesh Kumar",
+      phone: "+91-9431234587",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Sitamarhi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Samastipur",
+      address: "Samastipur - 848101",
+      officer: "Prof. R. P. Sinha",
+      phone: "+91-9431234588",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Samastipur&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Raghopur (Supaul)",
+      address: "Supaul - 852111",
+      officer: "Dr. Upendra Kumar",
+      phone: "+91-9431234589",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Raghopur&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Tekari (Gaya)",
+      address: "Gaya - 824236",
+      officer: "Er. Akhilesh Kumar",
+      phone: "+91-9431234590",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Tekari&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Bhojpur",
+      address: "Ara, Bhojpur - 802301",
+      officer: "Prof. S. K. Gupta",
+      phone: "+91-9431234591",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Bhojpur&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Nawada",
+      address: "Nawada - 805110",
+      officer: "Dr. Prem Kumar",
+      phone: "+91-9431234592",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Nawada&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Siwan",
+      address: "Siwan - 841226",
+      officer: "Er. R. D. Singh",
+      phone: "+91-9431234593",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Siwan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Rohtas",
+      address: "Dehri-on-Sone, Rohtas - 821307",
+      officer: "Prof. Kamlesh Kumar",
+      phone: "+91-9431234594",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Rohtas&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Madhepura",
+      address: "Madhepura - 852113",
+      officer: "Dr. Jitendra Kumar",
+      phone: "+91-9431234595",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Madhepura&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Nalanda",
+      address: "Nalanda - 803111",
+      officer: "Prof. R. S. Chaudhary",
+      phone: "+91-9431234596",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Nalanda&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      name: "Government Polytechnic Supaul",
+      address: "Supaul - 852131",
+      officer: "Er. K. K. Yadav",
+      phone: "+91-9431234597",
+      schedule: "10:00 AM - 4:00 PM",
+      mapEmbed: "https://maps.google.com/maps?q=Government%20Polytechnic%20Supaul&t=&z=13&ie=UTF8&iwloc=&output=embed"
     }
   ];
+
+  const activeCentreObj = nodalCentres.find(c => c.name === selectedCentreName) || nodalCentres[0];
 
   const faqs = [
     {
@@ -335,26 +659,68 @@ const Guide = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Left Column: List of Centres */}
-            <div className="lg:col-span-5 space-y-3">
+            <div className="lg:col-span-5 flex flex-col">
               <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Select Nodal Centre</span>
-              {nodalCentres.map((centre, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setSelectedCentre(index)}
-                  className={`w-full text-left p-4 rounded-xl border transition-all duration-300 flex flex-col gap-1 cursor-pointer ${
-                    selectedCentre === index
-                      ? 'border-brand-primary bg-purple-50/50 shadow-xs'
-                      : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-brand-primary/20'
-                  }`}
-                >
-                  <span className={`text-[9px] font-black uppercase tracking-wider ${selectedCentre === index ? 'text-brand-primary' : 'text-slate-500'}`}>
-                    Centre #{index + 1}
-                  </span>
-                  <span className="font-bold font-outfit text-sm text-slate-900">{centre.name}</span>
-                  <span className="text-[11px] text-slate-500 font-medium font-inter truncate">{centre.address}</span>
-                </button>
-              ))}
+              
+              {/* Search Bar for Centres */}
+              <div className="relative mb-3.5">
+                <input
+                  type="text"
+                  placeholder="Search Centre / City..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-8 py-2.5 border border-slate-200 rounded-xl outline-none text-xs font-semibold bg-slate-50/50 focus:bg-white focus:border-brand-primary transition-all font-inter"
+                />
+                <span className="absolute left-3 top-3 text-slate-400 text-xs">🔍</span>
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-3 top-3 text-slate-400 hover:text-slate-600 text-xs bg-transparent border-none cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+
+              {/* Scrollable list wrapper */}
+              <div className="space-y-2.5 max-h-[420px] overflow-y-auto pr-1.5 custom-scrollbar">
+                {(() => {
+                  const filtered = nodalCentres.filter(centre => 
+                    centre.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    centre.address.toLowerCase().includes(searchQuery.toLowerCase())
+                  );
+
+                  if (filtered.length === 0) {
+                    return (
+                      <div className="text-center py-8 text-xs font-semibold text-slate-400 border border-dashed border-slate-200 rounded-xl">
+                        No verification centres match your search.
+                      </div>
+                    );
+                  }
+
+                  return filtered.map((centre) => {
+                    const isSelected = activeCentreObj.name === centre.name;
+                    return (
+                      <button
+                        key={centre.name}
+                        type="button"
+                        onClick={() => setSelectedCentreName(centre.name)}
+                        className={`w-full text-left p-3.5 rounded-xl border transition-all duration-300 flex flex-col gap-0.5 cursor-pointer ${
+                          isSelected
+                            ? 'border-brand-primary bg-purple-50/50 shadow-xs'
+                            : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-brand-primary/20'
+                        }`}
+                      >
+                        <span className={`text-[9px] font-black uppercase tracking-wider ${isSelected ? 'text-brand-primary' : 'text-slate-500'}`}>
+                          Centre #{nodalCentres.findIndex(c => c.name === centre.name) + 1}
+                        </span>
+                        <span className="font-bold font-outfit text-sm text-slate-900 leading-tight">{centre.name}</span>
+                        <span className="text-[11px] text-slate-500 font-medium font-inter truncate w-full">{centre.address}</span>
+                      </button>
+                    );
+                  });
+                })()}
+              </div>
             </div>
 
             {/* Right Column: Details & Google Map Embed */}
@@ -366,14 +732,14 @@ const Guide = () => {
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Official Centre Name</span>
                     <h4 className="font-black font-outfit text-slate-900 text-base leading-tight">
-                      {nodalCentres[selectedCentre].name}
+                      {activeCentreObj.name}
                     </h4>
                   </div>
 
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Address</span>
                     <p className="text-xs text-slate-600 font-inter leading-relaxed">
-                      {nodalCentres[selectedCentre].address}
+                      {activeCentreObj.address}
                     </p>
                   </div>
 
@@ -381,13 +747,13 @@ const Guide = () => {
                     <div>
                       <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Nodal Officer</span>
                       <span className="font-bold text-xs text-slate-800 font-outfit">
-                        {nodalCentres[selectedCentre].officer}
+                        {activeCentreObj.officer}
                       </span>
                     </div>
                     <div>
                       <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Contact Phone</span>
-                      <a href={`tel:${nodalCentres[selectedCentre].phone}`} className="font-bold text-xs text-brand-primary font-outfit hover:underline">
-                        {nodalCentres[selectedCentre].phone}
+                      <a href={`tel:${activeCentreObj.phone}`} className="font-bold text-xs text-brand-primary font-outfit hover:underline">
+                        {activeCentreObj.phone}
                       </a>
                     </div>
                   </div>
@@ -395,13 +761,13 @@ const Guide = () => {
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Reporting Timings</span>
                     <span className="font-bold text-xs text-emerald-700 bg-emerald-50 border border-emerald-150 px-2 py-0.5 rounded inline-block font-outfit mt-1">
-                      ⏱️ {nodalCentres[selectedCentre].schedule}
+                      ⏱️ {activeCentreObj.schedule}
                     </span>
                   </div>
                 </div>
 
                 <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(nodalCentres[selectedCentre].name + " " + nodalCentres[selectedCentre].address)}`}
+                  href={`https://maps.google.com/?q=${encodeURIComponent(activeCentreObj.name + " " + activeCentreObj.address)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="bg-white border border-slate-200 text-slate-800 font-bold font-outfit py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-1.5 hover:bg-slate-100 transition-colors shadow-xs w-full text-center"
@@ -420,7 +786,7 @@ const Guide = () => {
                   style={{ border: 0 }}
                   loading="lazy"
                   allowFullScreen
-                  src={nodalCentres[selectedCentre].mapEmbed}
+                  src={activeCentreObj.mapEmbed}
                 />
               </div>
 
