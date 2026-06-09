@@ -571,21 +571,21 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
               </button>
 
               {/* Modal Banner Background */}
-              <div className="h-24 bg-gradient-to-r from-brand-primary/90 to-purple-600 relative">
-                <div className="absolute -bottom-10 left-6">
+              <div className="h-16 bg-gradient-to-r from-brand-primary/90 to-purple-600 relative">
+                <div className="absolute -bottom-7 left-5">
                   <div className="relative group">
                     <img 
                       src={editPhoto || studentInfo.profilePhoto || getDefaultAvatar(studentInfo.name)}
                       alt="Student Avatar"
-                      className="h-20 w-20 rounded-2xl border-4 border-white bg-slate-100 object-cover shadow-md"
+                      className="h-14 w-14 rounded-xl border-2 border-white bg-slate-100 object-cover shadow-sm"
                     />
                     {isEditing && (
                       <label 
                         htmlFor="profile-photo-upload" 
-                        className="absolute inset-0 bg-black/50 rounded-2xl flex flex-col items-center justify-center cursor-pointer text-white transition-all hover:bg-black/60"
+                        className="absolute inset-0 bg-black/50 rounded-xl flex flex-col items-center justify-center cursor-pointer text-white transition-all hover:bg-black/60"
                       >
-                        <Camera className="h-5 w-5 mb-0.5" />
-                        <span className="text-[9px] font-bold uppercase tracking-wider">Change</span>
+                        <Camera className="h-4 w-4 mb-0.5" />
+                        <span className="text-[8px] font-bold uppercase tracking-wider">Change</span>
                         <input 
                           type="file" 
                           id="profile-photo-upload" 
@@ -596,7 +596,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                       </label>
                     )}
                     {studentInfo.isPremium && (
-                      <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded-full shadow-xs border border-white">
+                      <span className="absolute -top-1.5 -right-1.5 bg-amber-500 text-white text-[8px] font-black px-1 py-0.5 rounded-full shadow-xs border border-white">
                         👑 PRO
                       </span>
                     )}
@@ -605,16 +605,16 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
               </div>
 
               {/* Modal Body */}
-              <div className="pt-12 px-6 pb-6 space-y-5">
+              <div className="pt-9 px-5 pb-4 space-y-3">
                 {!isEditing ? (
                   <>
                     {/* Header Info */}
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-center">
                       <div>
-                        <h3 className="text-xl font-bold font-outfit text-slate-900 leading-tight flex items-center gap-2">
+                        <h3 className="text-lg font-bold font-outfit text-slate-900 leading-tight flex items-center gap-1.5">
                           <span>{studentInfo.name}</span>
                         </h3>
-                        <p className="text-xs text-slate-500 font-inter">
+                        <p className="text-[11px] text-slate-500 font-inter">
                           {(() => {
                             try {
                               const users = JSON.parse(localStorage.getItem('pk_registered_students') || '[]');
@@ -626,9 +626,9 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                       </div>
                       <button 
                         onClick={() => setIsEditing(true)}
-                        className="flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold font-outfit cursor-pointer transition-colors"
+                        className="flex items-center gap-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-bold font-outfit cursor-pointer transition-colors"
                       >
-                        <Edit3 className="h-3.5 w-3.5" />
+                        <Edit3 className="h-3 w-3" />
                         <span>Edit Profile</span>
                       </button>
                     </div>
@@ -647,7 +647,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                         if (isDismissed) return null;
 
                         return (
-                          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 flex items-start gap-3 relative">
+                          <div className="bg-amber-50 border border-amber-200 rounded-xl p-2.5 flex items-start gap-2.5 relative">
                             {/* Dismiss (X) Button */}
                             <button
                               onClick={() => {
@@ -656,23 +656,23 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                                 setIsProfileModalOpen(false);
                                 setTimeout(() => setIsProfileModalOpen(true), 10);
                               }}
-                              className="absolute top-2.5 right-2.5 text-amber-400 hover:text-amber-700 hover:bg-amber-100 p-1 rounded-full transition-colors cursor-pointer"
+                              className="absolute top-2 right-2 text-amber-400 hover:text-amber-700 hover:bg-amber-100 p-0.5 rounded-full transition-colors cursor-pointer"
                               title="Dismiss"
                             >
-                              <X className="h-3.5 w-3.5" />
+                              <X className="h-3 w-3" />
                             </button>
 
-                            <span className="text-xl leading-none mt-0.5">⚡</span>
-                            <div className="flex-1 min-w-0 pr-5">
-                              <p className="text-xs font-bold text-amber-800">Demo Account — Upgrade karo!</p>
-                              <p className="text-[11px] text-amber-700 leading-snug mt-0.5">
+                            <span className="text-base leading-none mt-0.5">⚡</span>
+                            <div className="flex-1 min-w-0 pr-4">
+                              <p className="text-[11px] font-bold text-amber-800">Demo Account — Upgrade karo!</p>
+                              <p className="text-[10px] text-amber-700 leading-snug mt-0.5">
                                 Edit Profile me jaake apna <strong>Email / Phone</strong> aur <strong>Password</strong> set karo taaki next time roll number ki jagah in se bhi login kar sako.
                               </p>
                               <button
                                 onClick={() => setIsEditing(true)}
-                                className="mt-2 inline-flex items-center gap-1 bg-amber-500 hover:bg-amber-600 text-white text-[10px] font-extrabold px-3 py-1.5 rounded-lg cursor-pointer transition-colors font-outfit"
+                                className="mt-1.5 inline-flex items-center gap-1 bg-amber-500 hover:bg-amber-600 text-white text-[9px] font-extrabold px-2 py-1 rounded-md cursor-pointer transition-colors font-outfit"
                               >
-                                <Edit3 className="h-3 w-3" />
+                                <Edit3 className="h-2.5 w-2.5" />
                                 Account Complete Karo
                               </button>
                             </div>
@@ -682,34 +682,34 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                     })()}
 
                     {/* Academic & Exam Details Section */}
-                    <div className="border border-slate-150 rounded-2xl p-4 bg-slate-50/50 space-y-3">
-                      <h4 className="text-xs font-bold text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
-                        <GraduationCap className="h-4.5 w-4.5 text-brand-primary" />
+                    <div className="border border-slate-150 rounded-xl p-3 bg-slate-50/50 space-y-2">
+                      <h4 className="text-[11px] font-bold text-slate-900 flex items-center gap-1.5 border-b border-slate-200 pb-1.5">
+                        <GraduationCap className="h-4 w-4 text-brand-primary" />
                         <span>Exam & Academic Details (परीक्षा और शैक्षणिक विवरण)</span>
                       </h4>
 
-                      <div className="grid grid-cols-2 gap-3.5 text-xs font-medium">
+                      <div className="grid grid-cols-2 gap-2 text-[11px] font-medium">
                         {/* Course Group */}
                         <div className="space-y-0.5">
-                          <span className="text-[10px] text-slate-450 uppercase font-semibold">Course Group</span>
+                          <span className="text-[9px] text-slate-400 uppercase font-semibold">Course Group</span>
                           <span className="block font-bold text-slate-800">{studentInfo.courseGroup || 'PE (Polytechnic)'}</span>
                         </div>
 
                         {/* Registration Number */}
                         <div className="space-y-0.5">
-                          <span className="text-[10px] text-slate-450 uppercase font-semibold">Registration No</span>
+                          <span className="text-[9px] text-slate-400 uppercase font-semibold">Registration No</span>
                           <span className="block font-bold text-slate-800">{studentInfo.applicationNo || 'Not Provided'}</span>
                         </div>
 
                         {/* Exam Roll */}
                         <div className="space-y-0.5">
-                          <span className="text-[10px] text-slate-450 uppercase font-semibold">Roll Number</span>
+                          <span className="text-[9px] text-slate-400 uppercase font-semibold">Roll Number</span>
                           <span className="block font-bold text-slate-800">{studentInfo.roll}</span>
                         </div>
 
                         {/* Qualification */}
                         <div className="space-y-0.5">
-                          <span className="text-[10px] text-slate-450 uppercase font-semibold">Educational Qualification</span>
+                          <span className="text-[9px] text-slate-400 uppercase font-semibold">Educational Qualification</span>
                           <span className="block font-bold text-slate-800 leading-tight">
                             {studentInfo.qualBoard ? `${studentInfo.qualBoard} Board` : 'Not Provided'}
                             {studentInfo.qualYear ? `, ${studentInfo.qualYear}` : ''}
@@ -720,43 +720,43 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                     </div>
 
                     {/* Rank / Score Card Section */}
-                    <div className="border border-slate-150 rounded-2xl p-4 bg-slate-50/50 space-y-3">
-                      <h4 className="text-xs font-bold text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
-                        <Award className="h-4.5 w-4.5 text-brand-primary" />
+                    <div className="border border-slate-150 rounded-xl p-3 bg-slate-50/50 space-y-2">
+                      <h4 className="text-[11px] font-bold text-slate-900 flex items-center gap-1.5 border-b border-slate-200 pb-1.5">
+                        <Award className="h-4 w-4 text-brand-primary" />
                         <span>Rank & Score Card</span>
                       </h4>
 
-                      <div className="grid grid-cols-2 gap-3 text-xs font-medium">
-                        <div className="bg-white border border-slate-200 p-2.5 rounded-xl flex flex-col">
-                          <span className="text-[9px] text-slate-450 uppercase font-bold">Open UR Rank</span>
-                          <span className="text-base text-brand-primary font-black mt-0.5">{studentInfo.rank}</span>
+                      <div className="grid grid-cols-2 gap-2 text-[11px] font-medium">
+                        <div className="bg-white border border-slate-200 p-2 rounded-lg flex flex-col">
+                          <span className="text-[9px] text-slate-400 uppercase font-bold">Open UR Rank</span>
+                          <span className="text-sm text-brand-primary font-black mt-0.5">{studentInfo.rank}</span>
                         </div>
-                        <div className="bg-white border border-slate-200 p-2.5 rounded-xl flex flex-col">
-                          <span className="text-[9px] text-slate-450 uppercase font-bold">{studentInfo.category} Category Rank</span>
-                          <span className="text-base text-brand-primary font-black mt-0.5">{studentInfo.categoryRank || 'Not Provided'}</span>
+                        <div className="bg-white border border-slate-200 p-2 rounded-lg flex flex-col">
+                          <span className="text-[9px] text-slate-400 uppercase font-bold">{studentInfo.category} Category Rank</span>
+                          <span className="text-sm text-brand-primary font-black mt-0.5">{studentInfo.categoryRank || 'Not Provided'}</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Refer & Earn Section */}
-                    <div className="border border-purple-100 rounded-2xl p-4 bg-purple-50/30 flex items-center justify-between gap-4">
-                      <div className="space-y-1">
-                        <h4 className="text-xs font-extrabold text-brand-primary flex items-center gap-1.5">
-                          <Share2 className="h-4 w-4" />
+                    <div className="border border-purple-100 rounded-xl p-3 bg-purple-50/30 flex items-center justify-between gap-2.5">
+                      <div className="space-y-0.5">
+                        <h4 className="text-[11px] font-extrabold text-brand-primary flex items-center gap-1">
+                          <Share2 className="h-3.5 w-3.5" />
                           <span>Refer & Earn (रेफर और कमाएं)</span>
                         </h4>
-                        <p className="text-[11px] text-purple-700 leading-tight">Share this referral code with friends to earn premium predictor tokens.</p>
+                        <p className="text-[10px] text-purple-700 leading-tight">Share this referral code with friends to earn premium predictor tokens.</p>
                       </div>
-                      <div className="flex items-center gap-2 bg-white border border-purple-200 pl-3 pr-1 py-1 rounded-xl shadow-xs">
-                        <span className="text-xs font-black text-slate-900 tracking-wider">
+                      <div className="flex items-center gap-1.5 bg-white border border-purple-200 pl-2 pr-0.5 py-0.5 rounded-lg shadow-xs">
+                        <span className="text-[11px] font-black text-slate-900 tracking-wider">
                           {`PK-${(studentInfo?.name || 'STUDENT').split(' ')[0].toUpperCase()}-${studentInfo?.roll || 'ROLL'}`}
                         </span>
                         <button 
                           onClick={handleCopyReferral}
-                          className="bg-brand-primary hover:bg-purple-700 text-white p-2 rounded-lg cursor-pointer transition-colors flex items-center justify-center"
+                          className="bg-brand-primary hover:bg-purple-700 text-white p-1.5 rounded-md cursor-pointer transition-colors flex items-center justify-center"
                           title="Copy Code"
                         >
-                          {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                          {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
                         </button>
                       </div>
                     </div>
@@ -767,18 +767,18 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                         handleLogout();
                         setIsProfileModalOpen(false);
                       }}
-                      className="w-full flex items-center justify-center gap-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-600 py-3 rounded-xl text-sm font-bold font-outfit transition-colors cursor-pointer"
+                      className="w-full flex items-center justify-center gap-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-600 py-2 rounded-lg text-xs font-bold font-outfit transition-colors cursor-pointer"
                     >
-                      <LogOut className="h-4.5 w-4.5" />
+                      <LogOut className="h-4 w-4" />
                       <span>Log Out Profile</span>
                     </button>
                   </>
                 ) : (
                   /* Edit Profile Form Mode */
-                  <form onSubmit={handleSaveProfile} className="space-y-4">
-                    <h3 className="text-lg font-bold font-outfit text-slate-900 border-b pb-2">Edit Candidate Profile</h3>
+                  <form onSubmit={handleSaveProfile} className="space-y-3">
+                    <h3 className="text-base font-bold font-outfit text-slate-900 border-b pb-1.5">Edit Candidate Profile</h3>
                     
-                    <div className="grid grid-cols-2 gap-3 text-xs font-medium max-h-[320px] overflow-y-auto pr-1">
+                    <div className="grid grid-cols-2 gap-2.5 text-xs font-medium max-h-[260px] overflow-y-auto pr-1">
                       {/* Name */}
                       <div className="flex flex-col space-y-1">
                         <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Candidate Name</label>
@@ -787,7 +787,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           required
                           value={editName}
                           onChange={(e) => setEditName(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -797,7 +797,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                         <select
                           value={editCourseGroup}
                           onChange={(e) => setEditCourseGroup(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-bold text-slate-800 text-xs w-full focus:border-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-bold text-slate-800 text-xs w-full focus:border-brand-primary"
                         >
                           <option value="PE">PE (Polytechnic)</option>
                           <option value="PM">PM (Paramedical)</option>
@@ -814,7 +814,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           placeholder="e.g. 26010048"
                           value={editApplicationNo}
                           onChange={(e) => setEditApplicationNo(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -826,7 +826,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           required
                           value={editRoll}
                           onChange={(e) => setEditRoll(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -839,7 +839,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           min="1"
                           value={editRank}
                           onChange={(e) => setEditRank(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -851,7 +851,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           placeholder="e.g. BC-450"
                           value={editCategoryRank}
                           onChange={(e) => setEditCategoryRank(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -861,7 +861,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                         <select
                           value={editCategory}
                           onChange={(e) => setEditCategory(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-bold text-slate-800 text-xs w-full focus:border-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-bold text-slate-800 text-xs w-full focus:border-brand-primary"
                         >
                           <option value="UR">UR</option>
                           <option value="BC">BC (OBC)</option>
@@ -880,7 +880,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           placeholder="e.g. BSEB, CBSE"
                           value={editQualBoard}
                           onChange={(e) => setEditQualBoard(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -892,7 +892,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           placeholder="e.g. 2024"
                           value={editQualYear}
                           onChange={(e) => setEditQualYear(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -904,17 +904,17 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           placeholder="e.g. 84.5"
                           value={editQualMarks}
                           onChange={(e) => setEditQualMarks(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
                       {/* — Login Credentials Section — */}
-                      <div className="col-span-2 pt-2">
-                        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-primary border-t border-slate-200 pt-3">
+                      <div className="col-span-2 pt-1.5">
+                        <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-brand-primary border-t border-slate-205 pt-2">
                           <Lock className="h-3 w-3" />
                           <span>Login Credentials (Demo → Real Account)</span>
                         </div>
-                        <p className="text-[10px] text-slate-400 mt-0.5">Yaha email/phone aur password set karo taaki roll number ki jagah in se bhi login kar sako.</p>
+                        <p className="text-[9px] text-slate-400 mt-0.5">Yaha email/phone aur password set karo taaki roll number ki jagah in se bhi login kar sako.</p>
                       </div>
 
                       {/* Email/Phone */}
@@ -925,7 +925,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           placeholder="e.g. user@gmail.com or 9876543210"
                           value={editEmailOrPhone}
                           onChange={(e) => setEditEmailOrPhone(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
 
@@ -937,22 +937,22 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                           placeholder="Set custom password"
                           value={editPassword}
                           onChange={(e) => setEditPassword(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
                         />
                       </div>
                     </div>
 
-                    <div className="flex justify-end gap-3 pt-4 border-t">
+                    <div className="flex justify-end gap-2.5 pt-3 border-t">
                       <button 
                         type="button"
                         onClick={() => setIsEditing(false)}
-                        className="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-lg text-xs font-bold font-outfit transition-colors cursor-pointer"
+                        className="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-xs font-bold font-outfit transition-colors cursor-pointer"
                       >
                         Cancel
                       </button>
                       <button 
                         type="submit"
-                        className="bg-brand-primary hover:bg-purple-750 text-white px-5 py-2.5 rounded-lg text-xs font-bold font-outfit transition-colors cursor-pointer"
+                        className="bg-brand-primary hover:bg-purple-750 text-white px-4 py-2 rounded-lg text-xs font-bold font-outfit transition-colors cursor-pointer"
                       >
                         Save Changes
                       </button>
