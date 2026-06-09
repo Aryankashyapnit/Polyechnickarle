@@ -80,6 +80,12 @@
   --color-slate-100: var(--text-slate-100);
   --color-slate-50: var(--text-slate-50);
   
+  --color-purple-800: var(--text-slate-800);
+  --color-purple-650: var(--color-brand-primary-hover);
+  --color-purple-750: var(--color-brand-primary);
+  --color-purple-655: var(--color-brand-primary-hover);
+  --color-purple-755: var(--color-brand-primary);
+  
   --font-sans: 'Inter', sans-serif;
   --font-outfit: 'Outfit', sans-serif;
 }
@@ -233,10 +239,10 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --text-slate-600: #94a3b8 !important;
   --text-slate-555: #94a3b8 !important;
   --text-slate-505: #94a3b8 !important;
-  --text-slate-500: #64748b !important;
-  --text-slate-455: #475569 !important;
+  --text-slate-500: #94a3b8 !important;
+  --text-slate-455: #64748b !important;
   --text-slate-450: #64748b !important;
-  --text-slate-405: #475569 !important;
+  --text-slate-405: #64748b !important;
   --text-slate-400: #475569 !important;
   --text-slate-350: #334155 !important;
   --text-slate-300: #334155 !important;
@@ -263,9 +269,6 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
 .theme-cyber-midnight .bg-white:not(:hover) {
   background-color: #131c2e !important;
 }
-.theme-cyber-midnight .bg-white {
-  border-color: #1e293b !important;
-}
 
 .theme-cyber-midnight select option {
   background-color: #131c2e !important;
@@ -287,12 +290,12 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --text-slate-650: #71717a !important;
   --text-slate-600: #71717a !important;
   --text-slate-555: #71717a !important;
-  --text-slate-505: #a1a1aa !important;
-  --text-slate-500: #a1a1aa !important;
-  --text-slate-455: #d4d4d8 !important;
-  --text-slate-450: #d4d4d8 !important;
-  --text-slate-405: #d4d4d8 !important;
-  --text-slate-400: #d4d4d8 !important;
+  --text-slate-505: #71717a !important;
+  --text-slate-500: #71717a !important;
+  --text-slate-455: #a1a1aa !important;
+  --text-slate-450: #a1a1aa !important;
+  --text-slate-405: #a1a1aa !important;
+  --text-slate-400: #a1a1aa !important;
   --text-slate-350: #e4e4e7 !important;
   --text-slate-300: #e4e4e7 !important;
   --text-slate-205: #f4f4f5 !important;
@@ -318,9 +321,6 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
 .theme-sunset-gold .bg-white:not(:hover) {
   background-color: #fffdf9 !important;
 }
-.theme-sunset-gold .bg-white {
-  border-color: #f1ebd9 !important;
-}
 
 /* 3. Emerald Luxury (Green Velvet Theme) */
 .theme-emerald-luxury {
@@ -337,12 +337,12 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --text-slate-650: #0d9488 !important;
   --text-slate-600: #0d9488 !important;
   --text-slate-555: #0d9488 !important;
-  --text-slate-505: #14b8a6 !important;
-  --text-slate-500: #2dd4bf !important;
-  --text-slate-455: #99f6e4 !important;
-  --text-slate-450: #5eead4 !important;
-  --text-slate-405: #99f6e4 !important;
-  --text-slate-400: #5eead4 !important;
+  --text-slate-505: #0f766e !important;
+  --text-slate-500: #0f766e !important;
+  --text-slate-455: #14b8a6 !important;
+  --text-slate-450: #14b8a6 !important;
+  --text-slate-405: #14b8a6 !important;
+  --text-slate-400: #14b8a6 !important;
   --text-slate-350: #99f6e4 !important;
   --text-slate-300: #99f6e4 !important;
   --text-slate-205: #ccfbf1 !important;
@@ -367,7 +367,4 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
 
 .theme-emerald-luxury .bg-white:not(:hover) {
   background-color: #f6fdfa !important;
-}
-.theme-emerald-luxury .bg-white {
-  border-color: #d1fae5 !important;
 }

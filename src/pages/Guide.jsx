@@ -706,15 +706,15 @@ const Guide = () => {
                   placeholder="Search Centre / City..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-8 py-2.5 input-premium text-xs font-semibold font-inter bg-slate-50/50 focus:bg-white"
+                  className="w-full pl-9 pr-8 py-2.5 input-premium text-xs font-semibold font-inter focus:bg-white"
                 />
-                <span className="absolute left-3 top-3 text-slate-400 text-xs">🔍</span>
+                <Search className="absolute left-3 top-3.5 h-3.5 w-3.5 text-slate-400" />
                 {searchQuery && (
                   <button 
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-3 text-slate-400 hover:text-slate-600 text-xs bg-transparent border-none cursor-pointer"
+                    className="absolute right-3 top-3.5 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors bg-transparent border-none flex items-center justify-center p-0"
                   >
-                    ✕
+                    <X className="h-3.5 w-3.5" />
                   </button>
                 )}
               </div>
@@ -797,7 +797,7 @@ const Guide = () => {
 
                   <div>
                     <span className="text-[10px] font-bold text-slate-455 uppercase tracking-wider block">Reporting Timings</span>
-                    <span className="font-bold text-xs text-emerald-700 bg-emerald-50 border border-emerald-150 px-2 py-0.5 rounded inline-block font-outfit mt-1">
+                    <span className="font-bold text-xs text-brand-secondary bg-brand-secondary/10 border border-brand-secondary/20 px-2.5 py-1 rounded-xl inline-block font-outfit mt-1 shadow-xs">
                       ⏱️ {activeCentreObj.schedule}
                     </span>
                   </div>
