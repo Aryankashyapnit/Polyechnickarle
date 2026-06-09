@@ -309,7 +309,11 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                   >
                     {item.label}
                     {isActive && (
-                      <span className="absolute bottom-[-10px] left-3 right-3 h-[3px] bg-brand-primary rounded-full" />
+                      <motion.span 
+                        layoutId="activeTabUnderline"
+                        className="absolute bottom-[-10px] left-3 right-3 h-[3px] bg-brand-primary rounded-full" 
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
                     )}
                   </button>
                 );

@@ -47,17 +47,17 @@ const Hero = ({ setCurrentPage }) => {
             >
               <button
                 onClick={() => setCurrentPage('predictor')}
-                className="bg-gradient-to-r from-brand-primary to-purple-600 hover:from-purple-700 hover:to-brand-primary text-white px-6 py-4.5 rounded-lg font-extrabold font-outfit flex items-center justify-center gap-2 shadow-md hover:shadow-[0_4px_20px_rgba(90,36,179,0.3)] transition-all active:scale-98 select-none cursor-pointer"
+                className="group bg-gradient-to-r from-brand-primary to-purple-600 hover:from-purple-700 hover:to-brand-primary text-white px-6 py-4.5 rounded-lg font-extrabold font-outfit flex items-center justify-center gap-2 shadow-md hover:shadow-[0_4px_20px_rgba(90,36,179,0.3)] transition-all active:scale-98 select-none cursor-pointer"
               >
-                <Compass className="h-5 w-5" />
+                <Compass className="h-5 w-5 group-hover:rotate-45 transition-transform duration-500" />
                 <span>Predict My College</span>
               </button>
               
               <button
                 onClick={() => setCurrentPage('cutoff')}
-                className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 hover:border-brand-primary/30 px-6 py-4.5 rounded-lg font-bold font-outfit flex items-center justify-center gap-2 shadow-xs transition-all active:scale-98 select-none cursor-pointer"
+                className="group bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 hover:border-brand-primary/30 px-6 py-4.5 rounded-lg font-bold font-outfit flex items-center justify-center gap-2 shadow-xs transition-all active:scale-98 select-none cursor-pointer"
               >
-                <FileText className="h-5 w-5 text-slate-500" />
+                <FileText className="h-5 w-5 text-slate-500 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 <span>View Cutoffs</span>
               </button>
             </motion.div>

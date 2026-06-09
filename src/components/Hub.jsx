@@ -1,7 +1,30 @@
 import React from 'react';
 import { BookOpen, FileDown, CalendarRange, ArrowRight, Compass } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Hub = ({ setCurrentPage }) => {
+  // Container stagger options
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.05
+      }
+    }
+  };
+
+  // Card slide-up spring options
+  const cardVariants = {
+    hidden: { opacity: 0, y: 35 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 85, damping: 16 }
+    }
+  };
+
   return (
     <section className="py-16 bg-transparent border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,20 +41,31 @@ const Hub = ({ setCurrentPage }) => {
           </div>
           <button 
             onClick={() => setCurrentPage('guide')}
-            className="inline-flex items-center gap-1 text-sm font-bold text-brand-primary hover:text-purple-700 transition-colors font-outfit hover:underline cursor-pointer align-middle"
+            className="group inline-flex items-center gap-1 text-sm font-bold text-brand-primary hover:text-purple-700 transition-colors font-outfit hover:underline cursor-pointer align-middle"
           >
             <span>View All Resources</span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Layout Grid with scroll animation */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch"
+        >
           
           {/* Left Large Card: College Directory */}
-          <div className="lg:col-span-6 flex flex-col bg-white border border-slate-200/80 hover:border-brand-primary/30 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-[0_15px_45px_rgba(90,36,179,0.08)] hover:scale-[1.015] transition-all duration-500 group justify-between">
+          <motion.div 
+            variants={cardVariants}
+            whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(90, 36, 179, 0.3)", boxShadow: "0 20px 45px rgba(90, 36, 179, 0.06)" }}
+            onClick={() => setCurrentPage('college-list')}
+            className="lg:col-span-6 flex flex-col bg-white border border-slate-200/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-sm transition-all duration-500 group justify-between cursor-pointer"
+          >
             <div className="space-y-4">
-              <div className="h-12 w-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 shadow-xs">
+              <div className="h-12 w-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 shadow-xs group-hover:scale-105 group-hover:bg-brand-primary/15 transition-all duration-300">
                 <BookOpen className="h-6 w-6" />
               </div>
               <div className="space-y-2">
@@ -51,19 +85,22 @@ const Hub = ({ setCurrentPage }) => {
                 alt="Modern College Directory Campus" 
                 className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500 rounded-xl"
                 onError={(e) => {
-                  e.target.className = "w-full h-full object-cover group-hover:scale-103 transition-transform duration-500 rounded-xl";
+                  e.target.src = 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=400';
                 }}
               />
             </div>
 
             <button 
-              onClick={() => setCurrentPage('college-list')}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentPage('college-list');
+              }}
               className="inline-flex items-center gap-1.5 text-[15px] font-bold text-brand-primary hover:text-purple-700 font-outfit cursor-pointer self-start"
             >
               <span>Explore Colleges</span>
               <ArrowRight className="h-4.5 w-4.5 group-hover:translate-x-1 transition-transform" />
             </button>
-          </div>
+          </motion.div>
 
           {/* Right Cards Stack: Resource cards + Banner */}
           <div className="lg:col-span-6 flex flex-col gap-6 justify-between">
@@ -72,9 +109,13 @@ const Hub = ({ setCurrentPage }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               {/* Admit Card Card */}
-              <div className="bg-white border border-slate-200/80 hover:border-brand-primary/30 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-[0_15px_45px_rgba(90,36,179,0.08)] hover:scale-[1.015] transition-all duration-500">
+              <motion.div 
+                variants={cardVariants}
+                whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(90, 36, 179, 0.3)", boxShadow: "0 20px 45px rgba(90, 36, 179, 0.06)" }}
+                className="bg-white border border-slate-200/80 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between shadow-sm transition-all duration-500 group cursor-pointer"
+              >
                 <div className="space-y-4">
-                  <div className="h-10 w-10 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
+                  <div className="h-10 w-10 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 group-hover:scale-105 group-hover:bg-brand-primary/15 transition-all duration-300">
                     <FileDown className="h-5 w-5" />
                   </div>
                   <div className="space-y-1">
@@ -86,16 +127,23 @@ const Hub = ({ setCurrentPage }) => {
                 </div>
                 <a 
                   href="#" 
-                  className="mt-6 text-xs font-bold tracking-wider font-outfit text-brand-primary hover:text-purple-700 uppercase"
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-6 text-xs font-bold tracking-wider font-outfit text-brand-primary hover:text-purple-700 uppercase flex items-center gap-1"
                 >
-                  DOWNLOAD NOW
+                  <span>DOWNLOAD NOW</span>
+                  <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-350" />
                 </a>
-              </div>
+              </motion.div>
 
               {/* Schedule Card */}
-              <div className="bg-white border border-slate-200/80 hover:border-brand-primary/30 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-[0_15px_45px_rgba(90,36,179,0.08)] hover:scale-[1.015] transition-all duration-500">
+              <motion.div 
+                variants={cardVariants}
+                whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(90, 36, 179, 0.3)", boxShadow: "0 20px 45px rgba(90, 36, 179, 0.06)" }}
+                onClick={() => setCurrentPage('guide')}
+                className="bg-white border border-slate-200/80 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between shadow-sm transition-all duration-500 group cursor-pointer"
+              >
                 <div className="space-y-4">
-                  <div className="h-10 w-10 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
+                  <div className="h-10 w-10 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 group-hover:scale-105 group-hover:bg-brand-primary/15 transition-all duration-300">
                     <CalendarRange className="h-5 w-5" />
                   </div>
                   <div className="space-y-1">
@@ -106,20 +154,29 @@ const Hub = ({ setCurrentPage }) => {
                   </div>
                 </div>
                 <button 
-                  onClick={() => setCurrentPage('guide')}
-                  className="mt-6 text-xs font-bold tracking-wider font-outfit text-brand-primary hover:text-purple-700 uppercase text-left cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentPage('guide');
+                  }}
+                  className="mt-6 text-xs font-bold tracking-wider font-outfit text-brand-primary hover:text-purple-700 uppercase text-left cursor-pointer flex items-center gap-1"
                 >
-                  VIEW CALENDAR
+                  <span>VIEW CALENDAR</span>
+                  <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-350" />
                 </button>
-              </div>
+              </motion.div>
 
             </div>
 
             {/* Lower Banner: Counselling Procedure */}
-            <div className="bg-gradient-to-br from-[#2E1065] via-[#1E1B4B] to-[#0F172A] border border-purple-200/30 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between flex-grow shadow-xl hover:shadow-[0_15px_45px_rgba(90,36,179,0.15)] hover:scale-[1.015] transition-all duration-500 min-h-[200px] text-white">
+            <motion.div 
+              variants={cardVariants}
+              whileHover={{ y: -6, scale: 1.01, boxShadow: "0 20px 45px rgba(90, 36, 179, 0.15)" }}
+              onClick={() => setCurrentPage('guide')}
+              className="bg-gradient-to-br from-[#2E1065] via-[#1E1B4B] to-[#0F172A] border border-purple-200/30 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between flex-grow shadow-xl transition-all duration-500 min-h-[200px] text-white group cursor-pointer"
+            >
               
               {/* Background watermark icon */}
-              <div className="absolute right-[-20px] bottom-[-20px] opacity-[0.03] text-white select-none pointer-events-none">
+              <div className="absolute right-[-20px] bottom-[-20px] opacity-[0.03] text-white select-none pointer-events-none group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700">
                 <Compass className="h-44 w-44" />
               </div>
               
@@ -134,18 +191,22 @@ const Hub = ({ setCurrentPage }) => {
 
               <div className="mt-8 relative z-10">
                 <button 
-                  onClick={() => setCurrentPage('guide')}
-                  className="bg-gradient-to-r from-brand-secondary to-teal-500 hover:from-teal-600 hover:to-brand-secondary text-white font-extrabold font-outfit px-5 py-2.5 rounded-lg text-sm transition-all active:scale-95 cursor-pointer shadow-md hover:shadow-lg"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentPage('guide');
+                  }}
+                  className="bg-gradient-to-r from-brand-secondary to-teal-500 hover:from-teal-600 hover:to-brand-secondary text-white font-extrabold font-outfit px-5 py-2.5 rounded-lg text-sm transition-all active:scale-95 cursor-pointer shadow-md hover:shadow-lg flex items-center gap-1"
                 >
-                  Get Guide
+                  <span>Get Guide</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
 
-            </div>
+            </motion.div>
 
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>

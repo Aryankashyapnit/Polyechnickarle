@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Bell, ExternalLink, RefreshCw } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const LatestUpdates = () => {
   const [syncing, setSyncing] = useState(false);
@@ -85,38 +85,45 @@ const LatestUpdates = () => {
 
           {/* Notification Items List */}
           <div className="space-y-4">
-            {notifications.map((item) => (
-              <a
-                key={item.id}
-                href={item.link}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between gap-4 bg-slate-50/50 border border-slate-150 rounded-xl p-4 hover:border-brand-primary/30 hover:bg-slate-100/50 hover:shadow-xs transition-all duration-300 group"
-              >
-                <div className="flex items-center gap-4">
-                  {/* Date Widget */}
-                  <div className="flex flex-col items-center justify-center bg-brand-primary/10 border border-brand-primary/20 rounded-lg h-14 w-14 flex-shrink-0 text-brand-primary select-none font-outfit">
-                    <span className="text-[10px] font-bold tracking-wider leading-none uppercase">{item.month}</span>
-                    <span className="text-xl font-extrabold mt-0.5 leading-none">{item.day}</span>
+            <AnimatePresence initial={false}>
+              {notifications.map((item) => (
+                <motion.a
+                  layout
+                  initial={{ opacity: 0, y: -25 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                  key={item.id}
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between gap-4 bg-slate-50/50 border border-slate-150 rounded-xl p-4 hover:border-brand-primary/30 hover:bg-slate-100/50 hover:shadow-xs transition-all duration-300 group"
+                >
+                  <div className="flex items-center gap-4">
+                    {/* Date Widget */}
+                    <div className="flex flex-col items-center justify-center bg-brand-primary/10 border border-brand-primary/20 rounded-lg h-14 w-14 flex-shrink-0 text-brand-primary select-none font-outfit">
+                      <span className="text-[10px] font-bold tracking-wider leading-none uppercase">{item.month}</span>
+                      <span className="text-xl font-extrabold mt-0.5 leading-none">{item.day}</span>
+                    </div>
+
+                    {/* Copy */}
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold font-outfit text-slate-800 group-hover:text-brand-primary transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="text-slate-500 font-inter text-xs sm:text-[13px] mt-0.5 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Copy */}
-                  <div>
-                    <h4 className="text-sm sm:text-base font-bold font-outfit text-slate-800 group-hover:text-brand-primary transition-colors">
-                      {item.title}
-                    </h4>
-                    <p className="text-slate-500 font-inter text-xs sm:text-[13px] mt-0.5 leading-relaxed">
-                      {item.description}
-                    </p>
+                  {/* Link Icon */}
+                  <div className="text-slate-405 group-hover:text-brand-primary transition-colors p-1 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
+                    <ExternalLink className="h-4.5 w-4.5" />
                   </div>
-                </div>
-
-                {/* Link Icon */}
-                <div className="text-slate-405 group-hover:text-brand-primary transition-colors p-1 flex-shrink-0">
-                  <ExternalLink className="h-4.5 w-4.5" />
-                </div>
-              </a>
-            ))}
+                </motion.a>
+              ))}
+            </AnimatePresence>
           </div>
 
         </motion.div>

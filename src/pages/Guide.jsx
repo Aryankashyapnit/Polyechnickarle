@@ -3,6 +3,7 @@ import {
   FileText, Calendar, CheckSquare, Sparkles, ChevronDown, ChevronUp, Download, 
   Eye, AlertCircle, Award, Search, X, MapPin, Phone, Clock, User, ArrowRight, ShieldCheck 
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Guide = () => {
   // Document Checklist State
@@ -522,7 +523,7 @@ const Guide = () => {
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Document Checklist */}
-          <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between max-h-[560px]">
+          <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
             <div className="space-y-4">
               <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 select-none">
                 <CheckSquare className="h-5 w-5 text-brand-primary" />
@@ -543,10 +544,11 @@ const Guide = () => {
                 </div>
               </div>
 
-              {/* Interactive checklist items (Scrollable) */}
-              <div className="space-y-2 max-h-[320px] overflow-y-auto pr-1.5 custom-scrollbar">
+              {/* Interactive checklist items (Natural Height) */}
+              <div className="space-y-2">
                 {checklist.map((item) => (
-                  <div
+                  <motion.div
+                    whileTap={{ scale: 0.98 }}
                     key={item.id}
                     onClick={() => toggleChecklist(item.id)}
                     className={`flex items-start gap-3 p-3 border rounded-xl cursor-pointer transition-all duration-200 select-none ${
@@ -573,7 +575,7 @@ const Guide = () => {
                       </h4>
                       <p className="text-slate-500 font-inter text-[10px]">{item.subtitle}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -588,7 +590,7 @@ const Guide = () => {
           </div>
 
           {/* Right Column: Process Details */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between max-h-[560px]">
+          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
             <div className="space-y-5">
               <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 select-none">
                 <Sparkles className="h-5 w-5 text-brand-primary" />
@@ -596,7 +598,7 @@ const Guide = () => {
               </div>
 
               {/* Stepper Details block stack */}
-              <div className="space-y-4 max-h-[440px] overflow-y-auto pr-1.5 custom-scrollbar">
+              <div className="space-y-6">
                 
                 {/* Detail Step 1 */}
                 <div className="flex gap-4 border-l-2 border-brand-primary/20 pl-4 py-1 relative">
@@ -840,11 +842,21 @@ const Guide = () => {
                     {isOpen ? <ChevronUp className="h-4.5 w-4.5 text-slate-500" /> : <ChevronDown className="h-4.5 w-4.5 text-slate-500" />}
                   </button>
                   
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-2 text-slate-650 font-inter text-sm leading-relaxed border-t border-slate-100 bg-slate-50/50 animate-fadeIn">
-                      {faq.a}
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden border-t border-slate-100 bg-slate-50/50"
+                      >
+                        <div className="px-5 pb-5 pt-3 text-slate-650 font-inter text-sm leading-relaxed">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
