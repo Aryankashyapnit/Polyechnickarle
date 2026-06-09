@@ -454,11 +454,20 @@ const Guide = () => {
               Your comprehensive roadmap for Polytechnic admissions at Bihar. Navigate the registration process, choice filling, and seat allotment with technical precision and academic clarity.
             </p>
             <div className="flex flex-wrap gap-4 select-none">
-              <button className="bg-gradient-to-r from-brand-primary to-purple-650 hover:from-purple-750 hover:to-brand-primary text-white font-extrabold font-outfit px-5 py-3 rounded-xl text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => window.print()}
+                className="bg-gradient-to-r from-brand-primary to-purple-650 hover:from-purple-750 hover:to-brand-primary text-white font-extrabold font-outfit px-5 py-3 rounded-xl text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md hover:shadow-lg"
+              >
                 <Download className="h-4 w-4" />
                 <span>Download PDF Guide</span>
               </button>
-              <button className="bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 hover:border-brand-primary/30 font-bold font-outfit px-5 py-3 rounded-xl text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer select-none">
+              <button 
+                onClick={() => {
+                  const el = document.getElementById('timeline-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 hover:border-brand-primary/30 font-bold font-outfit px-5 py-3 rounded-xl text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer select-none"
+              >
                 <Eye className="h-4 w-4 text-slate-500" />
                 <span>View Complete Schedule</span>
               </button>
@@ -488,7 +497,7 @@ const Guide = () => {
         </section>
 
         {/* 2. Counselling Timeline Timeline */}
-        <section className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-sm select-none">
+        <section id="timeline-section" className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-sm select-none">
           <div className="flex items-center gap-2.5 mb-8 pb-4 border-b border-slate-100">
             <Calendar className="h-5 w-5 text-brand-primary" />
             <h3 className="text-lg font-bold font-outfit text-slate-800">Counselling Timeline</h3>
@@ -516,6 +525,10 @@ const Guide = () => {
               ))}
               
             </div>
+          </div>
+          <div className="mt-4 pt-3 border-t border-slate-200/30 flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] font-semibold text-slate-400 select-none">
+            <span>* Tentative timeline based on typical BCECEB schedules. Official dates will be updated post-announcement.</span>
+            <span className="bg-amber-50 text-brand-tertiary border border-amber-200 px-2.5 py-0.5 rounded-full select-none font-bold uppercase tracking-wider">Awaiting Official Notice</span>
           </div>
         </section>
 
@@ -693,7 +706,7 @@ const Guide = () => {
                   placeholder="Search Centre / City..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-8 py-2.5 border border-slate-200 rounded-xl outline-none text-xs font-semibold bg-slate-50/50 focus:bg-white focus:border-brand-primary transition-all font-inter"
+                  className="w-full pl-9 pr-8 py-2.5 input-premium text-xs font-semibold font-inter bg-slate-50/50 focus:bg-white"
                 />
                 <span className="absolute left-3 top-3 text-slate-400 text-xs">🔍</span>
                 {searchQuery && (
@@ -731,7 +744,7 @@ const Guide = () => {
                         onClick={() => setSelectedCentreName(centre.name)}
                         className={`w-full text-left p-3.5 rounded-xl border transition-all duration-300 flex flex-col gap-0.5 cursor-pointer ${
                           isSelected
-                            ? 'border-brand-primary bg-purple-50/50 shadow-xs'
+                            ? 'border-brand-primary bg-brand-primary/10 shadow-xs font-bold'
                             : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-brand-primary/20'
                         }`}
                       >
@@ -748,7 +761,7 @@ const Guide = () => {
             </div>
 
             {/* Right Column: Details & Google Map Embed */}
-            <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row gap-6 items-stretch">
+            <div className="lg:col-span-7 glass-premium border border-slate-200 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row gap-6 items-stretch">
               
               {/* Centre Details Info */}
               <div className="md:w-1/2 flex flex-col justify-between space-y-4">

@@ -10,9 +10,11 @@
   --color-brand-neutral: #64748B;
   --color-bg-canvas: #f8fafc;
   
+  --text-slate-955: #020617;
   --text-slate-950: #020617;
   --text-slate-900: #0f172a;
   --text-slate-855: #0f172a;
+  --text-slate-850: #1e293b;
   --text-slate-805: #1e293b;
   --text-slate-800: #1e293b;
   --text-slate-700: #334155;
@@ -22,7 +24,9 @@
   --text-slate-555: #475569;
   --text-slate-505: #64748b;
   --text-slate-500: #64748b;
+  --text-slate-455: #94a3b8;
   --text-slate-450: #94a3b8;
+  --text-slate-405: #94a3b8;
   --text-slate-400: #94a3b8;
   --text-slate-350: #cbd5e1;
   --text-slate-300: #cbd5e1;
@@ -50,9 +54,11 @@
   --color-brand-neutral: var(--color-brand-neutral);
   --color-bg-canvas: var(--color-bg-canvas);
 
+  --color-slate-955: var(--text-slate-955);
   --color-slate-950: var(--text-slate-950);
   --color-slate-900: var(--text-slate-900);
   --color-slate-855: var(--text-slate-855);
+  --color-slate-850: var(--text-slate-850);
   --color-slate-805: var(--text-slate-805);
   --color-slate-800: var(--text-slate-800);
   --color-slate-700: var(--text-slate-700);
@@ -62,7 +68,9 @@
   --color-slate-555: var(--text-slate-555);
   --color-slate-505: var(--text-slate-505);
   --color-slate-500: var(--text-slate-500);
+  --color-slate-455: var(--text-slate-455);
   --color-slate-450: var(--text-slate-450);
+  --color-slate-405: var(--text-slate-405);
   --color-slate-400: var(--text-slate-400);
   --color-slate-350: var(--text-slate-350);
   --color-slate-300: var(--text-slate-300);
@@ -212,9 +220,11 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
 /* 1. Cyber Midnight (Electric Dark Mode) */
 .theme-cyber-midnight {
   --color-bg-canvas: #090d16 !important;
+  --text-slate-955: #f8fafc !important;
   --text-slate-950: #f8fafc !important;
   --text-slate-900: #f8fafc !important;
   --text-slate-855: #f1f5f9 !important;
+  --text-slate-850: #cbd5e1 !important;
   --text-slate-805: #f1f5f9 !important;
   --text-slate-800: #cbd5e1 !important;
   --text-slate-700: #cbd5e1 !important;
@@ -224,7 +234,9 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --text-slate-555: #94a3b8 !important;
   --text-slate-505: #94a3b8 !important;
   --text-slate-500: #64748b !important;
+  --text-slate-455: #475569 !important;
   --text-slate-450: #64748b !important;
+  --text-slate-405: #475569 !important;
   --text-slate-400: #475569 !important;
   --text-slate-350: #334155 !important;
   --text-slate-300: #334155 !important;
@@ -248,8 +260,10 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --bg-input-focus: #070a12;
 }
 
-.theme-cyber-midnight .bg-white {
+.theme-cyber-midnight .bg-white:not(:hover) {
   background-color: #131c2e !important;
+}
+.theme-cyber-midnight .bg-white {
   border-color: #1e293b !important;
 }
 
@@ -261,9 +275,11 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
 /* 2. Sunset Gold (Warm Comfort Mode) */
 .theme-sunset-gold {
   --color-bg-canvas: #faf6eb !important;
+  --text-slate-955: #1c1917 !important;
   --text-slate-950: #1c1917 !important;
   --text-slate-900: #27272a !important;
   --text-slate-855: #3f3f46 !important;
+  --text-slate-850: #3f3f46 !important;
   --text-slate-805: #3f3f46 !important;
   --text-slate-800: #52525b !important;
   --text-slate-700: #52525b !important;
@@ -273,7 +289,9 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --text-slate-555: #71717a !important;
   --text-slate-505: #a1a1aa !important;
   --text-slate-500: #a1a1aa !important;
+  --text-slate-455: #d4d4d8 !important;
   --text-slate-450: #d4d4d8 !important;
+  --text-slate-405: #d4d4d8 !important;
   --text-slate-400: #d4d4d8 !important;
   --text-slate-350: #e4e4e7 !important;
   --text-slate-300: #e4e4e7 !important;
@@ -290,24 +308,28 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --color-brand-secondary-hover: #047857 !important;
 
   --border-glass: rgba(217, 119, 6, 0.15);
-  --bg-glass: rgba(255, 253, 249, 0.8);
+  --bg-glass: rgba(255, 255, 253, 0.8);
   --glow-shadow: rgba(217, 119, 6, 0.15);
   --bg-input: #ffffff;
   --border-input: #e4dec9;
   --bg-input-focus: #fffdf9;
 }
 
-.theme-sunset-gold .bg-white {
+.theme-sunset-gold .bg-white:not(:hover) {
   background-color: #fffdf9 !important;
+}
+.theme-sunset-gold .bg-white {
   border-color: #f1ebd9 !important;
 }
 
-/* 3. Emerald Luxury (Green Velvet Mode) */
+/* 3. Emerald Luxury (Green Velvet Theme) */
 .theme-emerald-luxury {
   --color-bg-canvas: #ecfdf5 !important;
+  --text-slate-955: #064e3b !important;
   --text-slate-950: #064e3b !important;
   --text-slate-900: #064e3b !important;
   --text-slate-855: #0f766e !important;
+  --text-slate-850: #115e59 !important;
   --text-slate-805: #0f766e !important;
   --text-slate-800: #115e59 !important;
   --text-slate-700: #115e59 !important;
@@ -317,7 +339,9 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --text-slate-555: #0d9488 !important;
   --text-slate-505: #14b8a6 !important;
   --text-slate-500: #2dd4bf !important;
+  --text-slate-455: #99f6e4 !important;
   --text-slate-450: #5eead4 !important;
+  --text-slate-405: #99f6e4 !important;
   --text-slate-400: #5eead4 !important;
   --text-slate-350: #99f6e4 !important;
   --text-slate-300: #99f6e4 !important;
@@ -341,7 +365,9 @@ body, .glass-premium, .input-premium, main, header, footer, card, table, td, th,
   --bg-input-focus: #f0fdf4;
 }
 
-.theme-emerald-luxury .bg-white {
+.theme-emerald-luxury .bg-white:not(:hover) {
   background-color: #f6fdfa !important;
+}
+.theme-emerald-luxury .bg-white {
   border-color: #d1fae5 !important;
 }
