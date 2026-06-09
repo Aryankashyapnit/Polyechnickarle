@@ -21,6 +21,46 @@ const LatestUpdates = () => {
       title: 'Download DCECE 2026 Polytechnic Rank Card',
       description: 'BCECE Board has published the merit lists and rank cards. Click to check your general and category ranks.',
       link: 'https://bceceboard.bihar.gov.in'
+    },
+    {
+      id: 3,
+      month: 'MAY',
+      day: '17',
+      title: 'Important Notice: Change in Centre for DCECE[PE/PMM/PM]-2026 Exam',
+      description: 'Official notice regarding updates and change of examination centers (Adv. No. BCECEB(DCECE)-2026/05 Dated 17.05.2026).',
+      link: 'https://bceceboard.bihar.gov.in'
+    },
+    {
+      id: 4,
+      month: 'MAY',
+      day: '11',
+      title: 'Important Notice: Downloading of Admit Card of DCECE[PE/PMM/PM]-2026',
+      description: 'The official notice for downloading Admit Cards of DCECE [PE/PMM/PM]-2026 (Adv. No. BCECEB(DCECE)-2026/04 Dated 11.05.2026).',
+      link: 'https://bceceboard.bihar.gov.in'
+    },
+    {
+      id: 5,
+      month: 'APR',
+      day: '20',
+      title: 'Important Notice: Extension in Date for Filling up Online Application form',
+      description: 'Registration dates extended for filling up the online application forms (Adv. No. BCECEB(DCECE)-2026/03 Dated 20.04.2026).',
+      link: 'https://bceceboard.bihar.gov.in'
+    },
+    {
+      id: 6,
+      month: 'MAR',
+      day: '18',
+      title: 'Important Notice Regarding Filling up Online Application form for DCECE-2026',
+      description: 'Guidelines and initial guidelines for candidates registering for online application forms (Adv. No. BCECEB(DCECE)-2026/02 Dated 18.03.2026).',
+      link: 'https://bceceboard.bihar.gov.in'
+    },
+    {
+      id: 7,
+      month: 'MAR',
+      day: '18',
+      title: 'Details Regarding Filling up Online Application form for DCECE-2026',
+      description: 'Prospective timeline and instructions for filling up the online application form (Adv. No. BCECEB(DCECE)-2026/01 Dated 18.03.2026).',
+      link: 'https://bceceboard.bihar.gov.in'
     }
   ]);
   
@@ -28,10 +68,10 @@ const LatestUpdates = () => {
     setSyncing(true);
     setTimeout(() => {
       setNotifications(prev => {
-        if (prev.some(item => item.id === 3)) return prev;
+        if (prev.some(item => item.id === 8)) return prev;
         return [
           {
-            id: 3,
+            id: 8,
             month: 'JUN',
             day: '09',
             title: '🔥 Live: Mop-up Round Offline Vacancy Matrix Published',
