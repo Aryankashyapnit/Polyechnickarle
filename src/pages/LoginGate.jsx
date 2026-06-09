@@ -240,7 +240,7 @@ const LoginGate = ({ onAuthenticate }) => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col md:flex-row bg-[#f8fafc] font-inter text-slate-800 select-none">
+    <div className="min-h-screen w-full flex flex-col md:flex-row bg-bg-canvas font-inter text-slate-800 select-none">
       
       {/* LEFT PANEL: Splendid Brand Showcase */}
       <div className="md:w-1/2 flex flex-col justify-between p-8 sm:p-12 md:p-16 bg-gradient-to-br from-[#2E1065] via-[#1E1B4B] to-[#0F172A] relative overflow-hidden text-white">
@@ -261,7 +261,7 @@ const LoginGate = ({ onAuthenticate }) => {
         </div>
 
         {/* Center Card: Glassmorphic description */}
-        <div className="my-12 md:my-auto space-y-6 relative z-10 max-w-lg bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+        <div className="my-12 md:my-auto space-y-6 relative z-10 max-w-lg bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.4)]">
           {/* Sparkles Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 text-white border border-white/10 text-[11px] font-bold tracking-wider uppercase select-none">
             <Sparkles className="h-4 w-4 text-brand-tertiary animate-pulse" />
@@ -279,6 +279,18 @@ const LoginGate = ({ onAuthenticate }) => {
           <p className="text-slate-300 font-medium text-sm sm:text-base leading-relaxed">
             Join thousands of Bihar engineering aspirants who trust PolytechnicKarle for data-driven seat matrix forecasting and cutoff insights.
           </p>
+
+          {/* Micro Dashboard Details */}
+          <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/10">
+            <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-center">
+              <span className="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Accuracy</span>
+              <span className="text-base font-black font-outfit text-brand-secondary">99.8%</span>
+            </div>
+            <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-center">
+              <span className="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Institutes</span>
+              <span className="text-base font-black font-outfit text-brand-tertiary">44 Nodal Govt</span>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Panel: Statistics */}
@@ -343,7 +355,7 @@ const LoginGate = ({ onAuthenticate }) => {
                           onBlur={() => setFocusField(null)}
                           onChange={(e) => setSignInIdentifier(e.target.value)}
                           placeholder="e.g. student@gmail.com or 9876543210"
-                          className="pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-slate-900 text-sm w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:shadow-[0_0_15px_rgba(90,36,179,0.05)] transition-all duration-300"
+                          className="input-premium pl-11 pr-4 py-3.5 text-slate-900 text-sm w-full font-semibold"
                         />
                       </div>
                     </div>
@@ -363,7 +375,7 @@ const LoginGate = ({ onAuthenticate }) => {
                           onBlur={() => setFocusField(null)}
                           onChange={(e) => setSignInPassword(e.target.value)}
                           placeholder="•••••••••"
-                          className="pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-slate-900 text-sm w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:shadow-[0_0_15px_rgba(90,36,179,0.05)] transition-all duration-300"
+                          className="input-premium pl-11 pr-4 py-3.5 text-slate-900 text-sm w-full font-semibold"
                         />
                       </div>
                     </div>
@@ -421,7 +433,7 @@ const LoginGate = ({ onAuthenticate }) => {
                           onBlur={() => setFocusField(null)}
                           onChange={(e) => setSignUpName(e.target.value)}
                           placeholder="e.g. Aryan Kumar"
-                          className="pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="input-premium pl-9 pr-3 py-2.5 text-slate-900 text-xs w-full font-semibold"
                         />
                       </div>
                     </div>
@@ -435,7 +447,7 @@ const LoginGate = ({ onAuthenticate }) => {
                         value={signUpEmailOrPhone}
                         onChange={(e) => setSignUpEmailOrPhone(e.target.value)}
                         placeholder="e.g. student@gmail.com or 9876543210"
-                        className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                        className="input-premium px-3 py-2.5 text-slate-900 text-xs w-full font-semibold"
                       />
                     </div>
 
@@ -449,7 +461,7 @@ const LoginGate = ({ onAuthenticate }) => {
                           value={signUpRoll}
                           onChange={(e) => setSignUpRoll(e.target.value)}
                           placeholder="e.g. 56214"
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="input-premium px-3 py-2.5 text-slate-900 text-xs w-full font-semibold"
                         />
                       </div>
                       <div className="flex flex-col space-y-1">
@@ -463,7 +475,7 @@ const LoginGate = ({ onAuthenticate }) => {
                             value={signUpRank}
                             onChange={(e) => setSignUpRank(e.target.value)}
                             placeholder="e.g. 1250"
-                            className="pl-3 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                            className="input-premium pl-3 pr-8 py-2.5 text-slate-900 text-xs w-full font-semibold"
                           />
                         </div>
                       </div>
@@ -476,7 +488,7 @@ const LoginGate = ({ onAuthenticate }) => {
                         <select
                           value={signUpCategory}
                           onChange={(e) => setSignUpCategory(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-bold text-slate-800 text-xs w-full focus:border-brand-primary"
+                          className="input-premium px-3 py-2 text-slate-800 text-xs w-full font-bold cursor-pointer"
                         >
                           <option value="UR">UR (Unreserved)</option>
                           <option value="BC">BC (OBC)</option>
@@ -491,7 +503,7 @@ const LoginGate = ({ onAuthenticate }) => {
                         <select
                           value={signUpGender}
                           onChange={(e) => setSignUpGender(e.target.value)}
-                          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-bold text-slate-800 text-xs w-full focus:border-brand-primary"
+                          className="input-premium px-3 py-2 text-slate-800 text-xs w-full font-bold cursor-pointer"
                         >
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
@@ -512,7 +524,7 @@ const LoginGate = ({ onAuthenticate }) => {
                           onBlur={() => setFocusField(null)}
                           onChange={(e) => setSignUpPassword(e.target.value)}
                           placeholder="•••••••••"
-                          className="pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-slate-900 text-xs w-full focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+                          className="input-premium pl-9 pr-3 py-2.5 text-slate-900 text-xs w-full font-semibold"
                         />
                       </div>
                     </div>
@@ -584,12 +596,13 @@ const LoginGate = ({ onAuthenticate }) => {
       {/* Demo Account Parameters Modal popup */}
       <AnimatePresence>
         {showDemoForm && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55 backdrop-blur-xs select-none">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs select-none">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              initial={{ opacity: 0, scale: 0.93, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="relative bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden w-full max-w-sm z-10 flex flex-col p-6 space-y-5 shadow-[0_15px_50px_rgba(90,36,179,0.08)] text-slate-800"
+              exit={{ opacity: 0, scale: 0.93, y: 20 }}
+              transition={{ type: "spring", stiffness: 120, damping: 14 }}
+              className="glass-premium relative border border-slate-200/50 rounded-3xl shadow-2xl overflow-hidden w-full max-w-sm z-10 flex flex-col p-6 space-y-5 shadow-[0_25px_60px_rgba(90,36,179,0.15)] text-slate-850"
             >
               <button 
                 type="button"
@@ -621,7 +634,7 @@ const LoginGate = ({ onAuthenticate }) => {
                     placeholder="e.g. Kumar Shanu"
                     value={demoName}
                     onChange={(e) => setDemoName(e.target.value)}
-                    className="px-3.5 py-2.5 border border-slate-200 focus:border-brand-primary outline-none text-slate-850 text-xs font-semibold rounded-xl bg-slate-50/50 font-inter"
+                    className="input-premium px-3.5 py-2.5 text-slate-900 text-xs font-semibold w-full"
                   />
                 </div>
 
@@ -635,7 +648,7 @@ const LoginGate = ({ onAuthenticate }) => {
                     placeholder="e.g. 4850"
                     value={demoRank}
                     onChange={(e) => setDemoRank(e.target.value)}
-                    className="px-3.5 py-2.5 border border-slate-200 focus:border-brand-primary outline-none text-slate-850 text-xs font-semibold rounded-xl bg-slate-50/50 font-inter"
+                    className="input-premium px-3.5 py-2.5 text-slate-900 text-xs font-semibold w-full"
                   />
                 </div>
 
@@ -645,7 +658,7 @@ const LoginGate = ({ onAuthenticate }) => {
                   <select
                     value={demoCategory}
                     onChange={(e) => setDemoCategory(e.target.value)}
-                    className="px-3 py-2.5 border border-slate-200 focus:border-brand-primary outline-none text-slate-800 text-xs font-bold bg-slate-50/50 rounded-xl cursor-pointer"
+                    className="input-premium px-3 py-2 text-slate-800 text-xs w-full font-bold cursor-pointer"
                   >
                     <option value="UR">UR (Unreserved)</option>
                     <option value="BC">BC (OBC)</option>
@@ -659,7 +672,7 @@ const LoginGate = ({ onAuthenticate }) => {
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-brand-primary to-purple-650 hover:from-purple-750 hover:to-brand-primary text-white font-extrabold font-outfit py-3 rounded-xl text-xs transition-all cursor-pointer mt-4 shadow-sm"
+                  className="w-full bg-gradient-to-r from-brand-primary to-purple-650 hover:from-purple-750 hover:to-brand-primary text-white font-extrabold font-outfit py-3.5 rounded-xl text-xs transition-all cursor-pointer mt-4 shadow-sm"
                 >
                   Unlock Predictor & Log In
                 </button>

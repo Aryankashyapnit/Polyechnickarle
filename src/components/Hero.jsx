@@ -51,7 +51,7 @@ const Hero = ({ setCurrentPage }) => {
             >
               <button
                 onClick={() => setCurrentPage('predictor')}
-                className="group bg-gradient-to-r from-brand-primary to-purple-600 hover:from-purple-700 hover:to-brand-primary text-white px-6 py-4.5 rounded-lg font-extrabold font-outfit flex items-center justify-center gap-2 shadow-md hover:shadow-[0_4px_20px_rgba(90,36,179,0.3)] transition-all active:scale-98 select-none cursor-pointer"
+                className="group bg-gradient-to-r from-brand-primary to-purple-600 hover:from-purple-750 hover:to-brand-primary text-white px-7 py-4.5 rounded-xl font-extrabold font-outfit flex items-center justify-center gap-2 shadow-md hover:shadow-[0_8px_25px_rgba(90,36,179,0.35)] hover:scale-[1.025] hover:-translate-y-0.5 transition-all duration-300 active:scale-98 select-none cursor-pointer"
               >
                 <Compass className="h-5 w-5 group-hover:rotate-45 transition-transform duration-500" />
                 <span>Predict My College</span>
@@ -59,29 +59,35 @@ const Hero = ({ setCurrentPage }) => {
               
               <button
                 onClick={() => setCurrentPage('cutoff')}
-                className="group bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 hover:border-brand-primary/30 px-6 py-4.5 rounded-lg font-bold font-outfit flex items-center justify-center gap-2 shadow-xs transition-all active:scale-98 select-none cursor-pointer"
+                className="group bg-white hover:bg-brand-primary/5 text-slate-800 hover:text-brand-primary border border-slate-200 hover:border-brand-primary/35 px-7 py-4.5 rounded-xl font-bold font-outfit flex items-center justify-center gap-2 shadow-xs hover:shadow-[0_4px_15px_rgba(90,36,179,0.05)] hover:scale-[1.025] hover:-translate-y-0.5 transition-all duration-300 active:scale-98 select-none cursor-pointer"
               >
                 <FileText className="h-5 w-5 text-slate-500 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 <span>View Cutoffs</span>
               </button>
             </motion.div>
           </div>
-
+ 
           {/* Right Column: Circular Brand Logo Illustration */}
           <div className="lg:col-span-5 flex justify-center items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, type: "spring", stiffness: 70 }}
-              className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96"
+              className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 p-6"
             >
               {/* Outer soft shadow ring */}
-              <div className="absolute inset-4 rounded-full bg-radial from-brand-primary/15 to-transparent blur-2xl -z-10 animate-pulse"></div>
+              <div className="absolute inset-2 rounded-full bg-radial from-brand-primary/20 to-transparent blur-3xl -z-10 animate-pulse"></div>
+              
+              {/* Animated Orbital Ring 1 */}
+              <div className="absolute inset-0 rounded-full border border-dashed border-brand-primary/20 animate-spin [animation-duration:25s]" />
+              
+              {/* Animated Orbital Ring 2 */}
+              <div className="absolute -inset-2 rounded-full border border-dotted border-brand-secondary/25 animate-spin [animation-duration:40s] [animation-direction:reverse]" />
               
               <img 
                 src="/logo.png" 
                 alt="Polytechnic Karle Seal Logo" 
-                className="w-full h-full object-contain rounded-full filter drop-shadow-[0_10px_25px_rgba(90,36,179,0.1)] animate-float"
+                className="w-full h-full object-contain rounded-full filter drop-shadow-[0_12px_30px_rgba(90,36,179,0.15)] animate-float relative z-10"
                 onError={(e) => {
                   // Fallback logo if missing
                   e.target.src = 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=300&auto=format&fit=crop';

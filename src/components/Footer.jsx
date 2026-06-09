@@ -3,7 +3,7 @@ import { Globe, Share2, Mail } from 'lucide-react';
 
 const Footer = ({ setCurrentPage }) => {
   return (
-    <footer className="bg-slate-50 border-t border-slate-200 text-slate-600 font-inter">
+    <footer className="bg-transparent border-t border-slate-200/40 text-slate-600 font-inter relative z-10">
       {/* Top section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 items-center">
@@ -25,7 +25,7 @@ const Footer = ({ setCurrentPage }) => {
                 Polytechnic <span className="text-brand-primary opacity-90 font-medium">Karle</span>
               </span>
             </div>
-            <p className="text-slate-500 text-[14px] leading-relaxed max-w-md">
+            <p className="text-slate-550 text-[14px] leading-relaxed max-w-md font-medium">
               Empowering Bihar's polytechnic students with data-driven counselling insights since 2014. Helping thousands secure seats in top government polytechnic colleges.
             </p>
           </div>
@@ -33,7 +33,7 @@ const Footer = ({ setCurrentPage }) => {
           {/* Quick Links & Socials */}
           <div className="flex flex-col md:items-end gap-6">
             {/* Links */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs md:text-sm font-medium text-slate-500">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs md:text-sm font-semibold text-slate-500">
               <a href="#about" className="hover:text-brand-primary transition-colors">About Us</a>
               <a href="#contact" className="hover:text-brand-primary transition-colors">Contact</a>
               <a href="#privacy" className="hover:text-brand-primary transition-colors">Privacy Policy</a>
@@ -44,21 +44,21 @@ const Footer = ({ setCurrentPage }) => {
             <div className="flex items-center gap-3">
               <a 
                 href="#" 
-                className="h-10 w-10 bg-slate-100 hover:bg-brand-primary/10 hover:text-brand-primary transition-all rounded-full flex items-center justify-center text-slate-650"
+                className="h-10 w-10 bg-white/70 hover:bg-brand-primary/10 hover:text-brand-primary border border-slate-200/50 hover:border-brand-primary/30 hover:scale-105 transition-all duration-300 rounded-full flex items-center justify-center text-slate-600"
                 title="Website"
               >
                 <Globe className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="h-10 w-10 bg-slate-100 hover:bg-brand-primary/10 hover:text-brand-primary transition-all rounded-full flex items-center justify-center text-slate-650"
+                className="h-10 w-10 bg-white/70 hover:bg-brand-primary/10 hover:text-brand-primary border border-slate-200/50 hover:border-brand-primary/30 hover:scale-105 transition-all duration-300 rounded-full flex items-center justify-center text-slate-600"
                 title="Share"
               >
                 <Share2 className="h-5 w-5" />
               </a>
               <a 
                 href="mailto:support@polytechnickarle.com" 
-                className="h-10 w-10 bg-slate-100 hover:bg-brand-primary/10 hover:text-brand-primary transition-all rounded-full flex items-center justify-center text-slate-650"
+                className="h-10 w-10 bg-white/70 hover:bg-brand-primary/10 hover:text-brand-primary border border-slate-200/50 hover:border-brand-primary/30 hover:scale-105 transition-all duration-300 rounded-full flex items-center justify-center text-slate-600"
                 title="Email Support"
               >
                 <Mail className="h-5 w-5" />
