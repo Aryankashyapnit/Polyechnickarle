@@ -798,8 +798,8 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
           
           {/* Left Side: Form Card */}
-          <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-2xl shadow-xl overflow-hidden">
-            <div className="p-5 sm:p-6 border-b border-slate-100 flex items-center gap-2.5 bg-slate-50">
+          <div className="lg:col-span-5 glass-premium rounded-2xl shadow-xl overflow-hidden">
+            <div className="p-5 sm:p-6 border-b border-slate-200/40 flex items-center gap-2.5 bg-slate-50/40 backdrop-blur-sm">
               <ClipboardList className="h-5 w-5 text-brand-primary" />
               <h3 className="text-lg font-bold font-outfit text-slate-900">
                 Enter Your Details
@@ -812,7 +812,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* UR Rank Input */}
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[13px] font-bold tracking-wide text-slate-600 font-outfit">
+                  <label className="text-[13px] font-bold tracking-wide text-slate-650 font-outfit">
                     UR (General) Rank
                   </label>
                   <input 
@@ -823,15 +823,15 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
                     value={formData.urRank}
                     onChange={(e) => setFormData({ ...formData, urRank: e.target.value })}
                     placeholder="e.g. 1250"
-                    className="px-4 py-3 bg-slate-50 border border-slate-200 text-slate-900 rounded-lg focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none font-inter text-sm w-full transition-all placeholder:text-slate-400"
+                    className="px-4 py-3 input-premium text-slate-900 font-inter text-sm w-full placeholder:text-slate-400"
                   />
                 </div>
 
                 {/* Category Rank Input */}
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[13px] font-bold tracking-wide text-slate-600 font-outfit flex justify-between">
+                  <label className="text-[13px] font-bold tracking-wide text-slate-650 font-outfit flex justify-between">
                     <span>Category Rank</span>
-                    {formData.category === 'UR' && <span className="text-slate-400 font-normal text-xs">(Optional)</span>}
+                    {formData.category === 'UR' && <span className="text-slate-405 font-normal text-xs">(Optional)</span>}
                   </label>
                   <input 
                     type="number"
@@ -842,7 +842,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
                     onChange={(e) => setFormData({ ...formData, categoryRank: e.target.value })}
                     placeholder={formData.category === 'UR' ? 'N/A' : 'e.g. 450'}
                     disabled={formData.category === 'UR'}
-                    className="px-4 py-3 bg-slate-50 border border-slate-200 text-slate-900 rounded-lg focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none font-inter text-sm w-full transition-all disabled:bg-slate-100 disabled:text-slate-400 placeholder:text-slate-400"
+                    className="px-4 py-3 input-premium text-slate-900 font-inter text-sm w-full disabled:bg-slate-100 disabled:text-slate-400 placeholder:text-slate-400"
                   />
                 </div>
               </div>
@@ -851,7 +851,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
               <div className="grid grid-cols-2 gap-4">
                 {/* Category */}
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[13px] font-bold tracking-wide text-slate-600 font-outfit">
+                  <label className="text-[13px] font-bold tracking-wide text-slate-655 font-outfit">
                     Category
                   </label>
                   <select
@@ -864,7 +864,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
                         categoryRank: newCat === 'UR' ? '' : formData.categoryRank 
                       });
                     }}
-                    className="px-3 py-3 border border-slate-200 rounded-lg focus:border-brand-primary outline-none font-inter text-sm bg-slate-50 text-slate-800 cursor-pointer w-full transition-all"
+                    className="px-3 py-3 input-premium font-inter text-sm text-slate-800 cursor-pointer w-full"
                   >
                     {categories.map((cat) => (
                       <option key={cat} value={cat} className="bg-white text-slate-800">{cat}</option>
@@ -874,13 +874,13 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
 
                 {/* Gender */}
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[13px] font-bold tracking-wide text-slate-600 font-outfit">
+                  <label className="text-[13px] font-bold tracking-wide text-slate-655 font-outfit">
                     Gender
                   </label>
                   <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                    className="px-3 py-3 border border-slate-200 rounded-lg focus:border-brand-primary outline-none font-inter text-sm bg-slate-50 text-slate-800 cursor-pointer w-full transition-all"
+                    className="px-3 py-3 input-premium font-inter text-sm text-slate-800 cursor-pointer w-full"
                   >
                     {genders.map((gen) => (
                       <option key={gen} value={gen} className="bg-white text-slate-800">{gen}</option>
@@ -893,7 +893,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Domicile State */}
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[13px] font-bold tracking-wide text-slate-600 font-outfit">
+                  <label className="text-[13px] font-bold tracking-wide text-slate-655 font-outfit">
                     Domicile State
                   </label>
                   <select
@@ -906,7 +906,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
                         homeDistrict: newDom === 'Other State' ? 'None' : formData.homeDistrict
                       });
                     }}
-                    className="px-3 py-3 border border-slate-200 rounded-lg focus:border-brand-primary outline-none font-inter text-sm bg-slate-50 text-slate-800 cursor-pointer w-full transition-all"
+                    className="px-3 py-3 input-premium font-inter text-sm text-slate-800 cursor-pointer w-full"
                   >
                     {domiciles.map((dom) => (
                       <option key={dom} value={dom} className="bg-white text-slate-800">{dom}</option>
@@ -916,13 +916,13 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
 
                 {/* Rank Inflation Index */}
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[13px] font-bold tracking-wide text-slate-600 font-outfit">
+                  <label className="text-[13px] font-bold tracking-wide text-slate-655 font-outfit">
                     Expected Rank Inflation
                   </label>
                   <select
                     value={formData.inflationIndex}
                     onChange={(e) => setFormData({ ...formData, inflationIndex: e.target.value })}
-                    className="px-3 py-3 border border-slate-200 rounded-lg focus:border-brand-primary outline-none font-inter text-sm bg-slate-50 text-slate-800 cursor-pointer w-full transition-all"
+                    className="px-3 py-3 input-premium font-inter text-sm text-slate-800 cursor-pointer w-full"
                   >
                     <option value="1.00" className="bg-white text-slate-800">0% (No Inflation)</option>
                     <option value="1.05" className="bg-white text-slate-800">5% (Standard Inflation)</option>
@@ -934,14 +934,14 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
 
               {/* Home District Dropdown */}
               <div className="flex flex-col space-y-1.5">
-                <label className="text-[13px] font-bold tracking-wide text-slate-600 font-outfit">
+                <label className="text-[13px] font-bold tracking-wide text-slate-655 font-outfit">
                   Home District (Optional Priority)
                 </label>
                 <select
                   value={formData.homeDistrict}
                   disabled={formData.domicile === 'Other State'}
                   onChange={(e) => setFormData({ ...formData, homeDistrict: e.target.value })}
-                  className="px-3 py-3 border border-slate-200 rounded-lg focus:border-brand-primary outline-none font-inter text-sm bg-slate-50 text-slate-800 cursor-pointer w-full transition-all disabled:bg-slate-100 disabled:text-slate-400"
+                  className="px-3 py-3 input-premium font-inter text-sm text-slate-805 cursor-pointer w-full disabled:bg-slate-100 disabled:text-slate-400"
                 >
                   <option value="None" className="bg-white text-slate-800">None (No Priority)</option>
                   {districtsOfBihar.map((dist) => (
@@ -961,7 +961,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
               </button>
 
               {/* Accuracy Seal */}
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-2.5">
+              <div className="bg-slate-100/50 border border-slate-205/60 rounded-xl p-3.5 flex items-start gap-2.5 backdrop-blur-sm">
                 <ShieldAlert className="h-5 w-5 text-brand-primary mt-0.5 flex-shrink-0" />
                 <p className="text-[12px] text-slate-600 font-inter leading-relaxed">
                   Our algorithms analyze weighted historical cutoff data (2025, 2024, 2022) using Bihar's official priority reservation matrix to ensure high prediction accuracy.
@@ -1196,22 +1196,22 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="relative overflow-hidden bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm transition-all duration-500 space-y-6"
+                      className="relative overflow-hidden glass-premium rounded-2xl p-6 shadow-sm transition-all duration-500 space-y-6"
                     >
                       {/* Locking Overlay */}
                       {!studentInfo?.isPremium && (
-                        <div className="absolute inset-0 bg-white/70 backdrop-blur-[4px] z-25 flex flex-col items-center justify-center p-6 text-center">
-                          <div className="max-w-md space-y-4 bg-white/95 p-8 rounded-3xl border border-slate-200/80 shadow-2xl">
-                            <div className="h-14 w-14 rounded-full bg-purple-100 text-brand-primary flex items-center justify-center mx-auto mb-2 animate-bounce">
+                        <div className="absolute inset-0 bg-white/40 backdrop-blur-[6px] z-25 flex flex-col items-center justify-center p-6 text-center">
+                          <div className="max-w-md space-y-4 glass-premium p-8 rounded-3xl shadow-2xl pulsing-border">
+                            <div className="h-14 w-14 rounded-full bg-purple-100/80 text-brand-primary flex items-center justify-center mx-auto mb-2 animate-bounce border border-purple-200/50">
                               <ListOrdered className="h-6 w-6" />
                             </div>
-                            <span className="inline-block bg-amber-105 text-amber-800 border border-amber-250 text-[10px] font-black tracking-widest px-3 py-1 rounded-full uppercase font-outfit">
+                            <span className="inline-block bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-black tracking-widest px-3 py-1 rounded-full uppercase font-outfit">
                               🔒 Choice Sheet Locked
                             </span>
                             <h4 className="font-black font-outfit text-slate-900 text-lg sm:text-xl leading-snug">
                               Get Exact BCECEB Choice Filling Preference List
                             </h4>
-                            <p className="text-slate-655 font-inter text-xs sm:text-sm leading-relaxed">
+                            <p className="text-slate-600 font-inter text-xs sm:text-sm leading-relaxed">
                               Aapke rank aur category preference ke matching government colleges ka systematic choice sequence check karein. Is sequence ko direct portal me copy-paste kar sakte hain!
                             </p>
                             <button
@@ -1219,7 +1219,7 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
                                 setCheckoutStep('select');
                                 setShowCheckoutModal(true);
                               }}
-                              className="w-full bg-gradient-to-r from-brand-primary to-purple-650 hover:from-purple-750 hover:to-brand-primary text-white font-extrabold font-outfit py-3.5 rounded-xl text-sm transition-all active:scale-97 cursor-pointer shadow-md flex items-center justify-center gap-2"
+                              className="w-full bg-gradient-to-r from-brand-primary to-purple-655 hover:from-purple-755 hover:to-brand-primary text-white font-extrabold font-outfit py-3.5 rounded-xl text-sm transition-all active:scale-97 cursor-pointer shadow-md flex items-center justify-center gap-2"
                             >
                               <span>Unlock Smart Choice Sheet (₹1)</span>
                             </button>

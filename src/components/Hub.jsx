@@ -62,7 +62,7 @@ const Hub = ({ setCurrentPage }) => {
             variants={cardVariants}
             whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(90, 36, 179, 0.3)", boxShadow: "0 20px 45px rgba(90, 36, 179, 0.06)" }}
             onClick={() => setCurrentPage('college-list')}
-            className="lg:col-span-6 flex flex-col bg-white border border-slate-200/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-sm transition-all duration-500 group justify-between cursor-pointer"
+            className="lg:col-span-6 flex flex-col glass-premium rounded-2xl p-6 sm:p-8 shadow-sm transition-all duration-500 group justify-between cursor-pointer"
           >
             <div className="space-y-4">
               <div className="h-12 w-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 shadow-xs group-hover:scale-105 group-hover:bg-brand-primary/15 transition-all duration-300">
@@ -112,7 +112,7 @@ const Hub = ({ setCurrentPage }) => {
               <motion.div 
                 variants={cardVariants}
                 whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(90, 36, 179, 0.3)", boxShadow: "0 20px 45px rgba(90, 36, 179, 0.06)" }}
-                className="bg-white border border-slate-200/80 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between shadow-sm transition-all duration-500 group cursor-pointer"
+                className="glass-premium rounded-2xl p-6 flex flex-col justify-between shadow-sm transition-all duration-500 group cursor-pointer"
               >
                 <div className="space-y-4">
                   <div className="h-10 w-10 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 group-hover:scale-105 group-hover:bg-brand-primary/15 transition-all duration-300">
@@ -140,7 +140,7 @@ const Hub = ({ setCurrentPage }) => {
                 variants={cardVariants}
                 whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(90, 36, 179, 0.3)", boxShadow: "0 20px 45px rgba(90, 36, 179, 0.06)" }}
                 onClick={() => setCurrentPage('guide')}
-                className="bg-white border border-slate-200/80 backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between shadow-sm transition-all duration-500 group cursor-pointer"
+                className="glass-premium rounded-2xl p-6 flex flex-col justify-between shadow-sm transition-all duration-500 group cursor-pointer"
               >
                 <div className="space-y-4">
                   <div className="h-10 w-10 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20 group-hover:scale-105 group-hover:bg-brand-primary/15 transition-all duration-300">

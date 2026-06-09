@@ -479,12 +479,12 @@ const Cutoff = () => {
         {cutoffTab === 'cutoff' ? (
           <>
             {/* Filters Card */}
-            <div className="bg-white border border-slate-200 shadow-xs rounded-2xl p-5 sm:p-6 space-y-5 mb-8">
+            <div className="glass-premium shadow-sm rounded-2xl p-5 sm:p-6 space-y-5 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
             
             {/* Search */}
             <div className="flex flex-col space-y-1.5">
-              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider font-outfit">Search College</label>
+              <label className="text-xs font-bold text-slate-505 uppercase tracking-wider font-outfit">Search College</label>
               <div className="relative">
                 <Search className="absolute left-3 top-3.5 h-4 w-4 text-slate-400" />
                 <input 
@@ -498,14 +498,14 @@ const Cutoff = () => {
                     }
                   }}
                   placeholder="Enter college name..."
-                  className="pl-9 pr-4 py-3 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg outline-none font-inter text-sm w-full focus:border-brand-primary"
+                  className="pl-9 pr-4 py-3 input-premium text-slate-900 font-inter text-sm w-full"
                 />
               </div>
             </div>
 
             {/* Branch */}
             <div className="flex flex-col space-y-1.5">
-              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider font-outfit">Engineering Branch</label>
+              <label className="text-xs font-bold text-slate-505 uppercase tracking-wider font-outfit">Engineering Branch</label>
               <select
                 value={selectedBranch}
                 onChange={(e) => {
@@ -515,7 +515,7 @@ const Cutoff = () => {
                     setSelectedYear('All');
                   }
                 }}
-                className="px-3 py-3 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg outline-none font-inter text-sm w-full cursor-pointer focus:border-brand-primary font-bold"
+                className="px-3 py-3 input-premium text-slate-900 font-inter text-sm w-full cursor-pointer font-bold animate-transition"
               >
                 {branches.map(b => (
                   <option key={b} value={b}>{b}</option>
@@ -525,11 +525,11 @@ const Cutoff = () => {
 
             {/* Category */}
             <div className="flex flex-col space-y-1.5">
-              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider font-outfit">Caste Category</label>
+              <label className="text-xs font-bold text-slate-505 uppercase tracking-wider font-outfit">Caste Category</label>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-3 py-3 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg outline-none font-inter text-sm w-full cursor-pointer focus:border-brand-primary font-bold"
+                className="px-3 py-3 input-premium text-slate-900 font-inter text-sm w-full cursor-pointer font-bold animate-transition"
               >
                 {categories.map(c => (
                   <option key={c} value={c}>{c}</option>
@@ -539,11 +539,11 @@ const Cutoff = () => {
 
             {/* Cutoff Year Selector */}
             <div className="flex flex-col space-y-1.5">
-              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider font-outfit">Cutoff Year</label>
+              <label className="text-xs font-bold text-slate-505 uppercase tracking-wider font-outfit">Cutoff Year</label>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="px-3 py-3 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg outline-none font-inter text-sm w-full cursor-pointer focus:border-brand-primary font-bold"
+                className="px-3 py-3 input-premium text-slate-900 font-inter text-sm w-full cursor-pointer font-bold animate-transition"
               >
                 <option value="All">All Years</option>
                 <option value="2025">2025</option>
@@ -557,8 +557,8 @@ const Cutoff = () => {
           </div>
 
           {/* Table Footer Controls */}
-          <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <span className="text-xs font-semibold bg-slate-50 text-slate-600 border border-slate-200/80 px-3 py-1.5 rounded-full select-none">
+          <div className="border-t border-slate-200/40 pt-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <span className="text-xs font-semibold bg-slate-100/50 text-slate-600 border border-slate-205 px-3 py-1.5 rounded-full select-none backdrop-blur-xs">
               Results: {filteredData.length} Cutoffs Found
             </span>
             <button className="bg-brand-primary hover:bg-brand-primary-hover text-white font-extrabold font-outfit px-5 py-2.5 rounded-lg text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-xs select-none uppercase tracking-wide">
@@ -570,7 +570,7 @@ const Cutoff = () => {
         </div>
 
         {/* Database Table Container */}
-        <div className="bg-white border border-slate-200 rounded-2xl shadow-xs hover:border-brand-primary/30 transition-all duration-300 overflow-hidden mb-12">
+        <div className="glass-premium rounded-2xl shadow-sm hover:border-brand-primary/30 transition-all duration-300 overflow-hidden mb-12">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[700px]">
               {/* Header */}

@@ -523,7 +523,7 @@ const Guide = () => {
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Document Checklist */}
-          <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
+          <div className="lg:col-span-5 glass-premium rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
             <div className="space-y-4">
               <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 select-none">
                 <CheckSquare className="h-5 w-5 text-brand-primary" />
@@ -590,7 +590,7 @@ const Guide = () => {
           </div>
 
           {/* Right Column: Process Details */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
+          <div className="lg:col-span-7 glass-premium rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
             <div className="space-y-5">
               <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 select-none">
                 <Sparkles className="h-5 w-5 text-brand-primary" />
@@ -832,7 +832,7 @@ const Guide = () => {
               return (
                 <div 
                   key={faq.id}
-                  className="bg-white border border-slate-200 hover:border-brand-primary/30 rounded-xl overflow-hidden shadow-xs transition-all duration-300"
+                  className="glass-premium hover:border-brand-primary/30 rounded-xl overflow-hidden shadow-xs transition-all duration-300"
                 >
                   <button
                     onClick={() => setActiveFaq(isOpen ? null : faq.id)}

@@ -56,7 +56,7 @@ const LatestUpdates = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-white border border-slate-200 border-l-4 border-l-brand-primary rounded-2xl p-6 sm:p-8 shadow-xs"
+          className="glass-premium border-l-4 border-l-brand-primary rounded-2xl p-6 sm:p-8 shadow-xs"
         >
           
           {/* Header */}
@@ -101,8 +101,8 @@ const LatestUpdates = () => {
                 >
                   <div className="flex items-center gap-4">
                     {/* Date Widget */}
-                    <div className="flex flex-col items-center justify-center bg-brand-primary/10 border border-brand-primary/20 rounded-lg h-14 w-14 flex-shrink-0 text-brand-primary select-none font-outfit">
-                      <span className="text-[10px] font-bold tracking-wider leading-none uppercase">{item.month}</span>
+                    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-brand-primary to-purple-600 text-white rounded-lg h-14 w-14 flex-shrink-0 select-none font-outfit shadow-sm">
+                      <span className="text-[10px] font-bold tracking-wider leading-none uppercase text-purple-100">{item.month}</span>
                       <span className="text-xl font-extrabold mt-0.5 leading-none">{item.day}</span>
                     </div>
 

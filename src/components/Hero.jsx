@@ -5,6 +5,10 @@ import { ShieldCheck, Compass, FileText } from 'lucide-react';
 const Hero = ({ setCurrentPage }) => {
   return (
     <section className="relative overflow-hidden py-12 md:py-20 lg:py-24 bg-dot-grid bg-opacity-[0.25]">
+      {/* Background Mesh Gradient Blobs */}
+      <div className="absolute top-1/4 left-1/12 w-72 h-72 rounded-full bg-brand-primary/10 blur-3xl -z-10 animate-mesh-drift" />
+      <div className="absolute bottom-1/4 right-1/12 w-80 h-80 rounded-full bg-brand-secondary/8 blur-3xl -z-10 animate-mesh-drift [animation-delay:4s]" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
           
@@ -16,7 +20,7 @@ const Hero = ({ setCurrentPage }) => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 text-xs font-bold tracking-wide select-none"
+              className="pulsing-border inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 text-xs font-bold tracking-wide select-none"
             >
               <ShieldCheck className="h-4 w-4 text-brand-primary" />
               <span>Official BCECE Counselling Partner</span>

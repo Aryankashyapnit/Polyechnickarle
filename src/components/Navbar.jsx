@@ -273,7 +273,7 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
 
   return (
     <>
-      <nav className="bg-white/80 border-b border-slate-200/80 sticky top-0 z-40 shadow-xs backdrop-blur-md select-none text-slate-800">
+      <nav className="glass-premium sticky top-0 z-40 shadow-xs select-none text-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             

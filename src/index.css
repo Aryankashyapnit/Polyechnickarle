@@ -81,3 +81,59 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Glassmorphism & premium UI overrides */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(14px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+.glass-dark-premium {
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(14px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.input-premium {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  outline: none !important;
+}
+.input-premium:focus {
+  border-color: #5A24B3 !important;
+  box-shadow: 0 0 0 4px rgba(90, 36, 179, 0.15) !important;
+  background: #ffffff !important;
+}
+
+/* Pulsing animated border tag */
+.pulsing-border {
+  position: relative;
+}
+.pulsing-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1.5px solid rgba(90, 36, 179, 0.4);
+  animation: border-pulse 2.5s cubic-bezier(0.25, 0, 0, 1) infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes border-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.06); opacity: 0; }
+}
+
+@keyframes mesh-drift {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(25px, -35px) scale(1.1); }
+  66% { transform: translate(-15px, 15px) scale(0.95); }
+}
+
+.animate-mesh-drift {
+  animation: mesh-drift 12s ease-in-out infinite;
+}
