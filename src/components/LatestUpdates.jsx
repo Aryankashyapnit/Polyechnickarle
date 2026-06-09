@@ -101,9 +101,9 @@ const LatestUpdates = () => {
                 >
                   <div className="flex items-center gap-4">
                     {/* Date Widget */}
-                    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-brand-primary to-purple-600 text-white rounded-lg h-14 w-14 flex-shrink-0 select-none font-outfit shadow-sm">
-                      <span className="text-[10px] font-bold tracking-wider leading-none uppercase text-purple-100">{item.month}</span>
-                      <span className="text-xl font-extrabold mt-0.5 leading-none">{item.day}</span>
+                    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-brand-primary to-purple-600 text-white rounded-xl h-14 w-14 flex-shrink-0 select-none font-outfit shadow-sm py-2 px-1 text-center">
+                      <span className="text-[9px] font-bold tracking-widest uppercase text-purple-200/90 leading-tight block">{item.month}</span>
+                      <span className="text-xl font-black mt-0.5 leading-none block">{item.day}</span>
                     </div>
 
                     {/* Copy */}
