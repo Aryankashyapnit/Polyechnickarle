@@ -633,17 +633,37 @@ const Navbar = ({ currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, studen
                       </button>
                     </div>
 
-                    {/* Demo Account Upgrade Banner */}
+                    {/* Demo Account Upgrade Banner — Dismissible */}
                     {(() => {
                       try {
                         const users = JSON.parse(localStorage.getItem('pk_registered_students') || '[]');
                         const u = users.find(x => String(x.roll) === String(studentInfo.roll));
                         const isDemo = !u?.emailOrPhone || u.emailOrPhone.includes('@demo.com');
                         if (!isDemo) return null;
+
+                        // Check if user has dismissed this banner
+                        const dismissedKey = `pk_demo_banner_dismissed_${studentInfo.roll}`;
+                        const isDismissed = localStorage.getItem(dismissedKey) === 'true';
+                        if (isDismissed) return null;
+
                         return (
-                          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 flex items-start gap-3">
+                          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 flex items-start gap-3 relative">
+                            {/* Dismiss (X) Button */}
+                            <button
+                              onClick={() => {
+                                localStorage.setItem(dismissedKey, 'true');
+                                // Force re-render by closing and reopening (trigger state update)
+                                setIsProfileModalOpen(false);
+                                setTimeout(() => setIsProfileModalOpen(true), 10);
+                              }}
+                              className="absolute top-2.5 right-2.5 text-amber-400 hover:text-amber-700 hover:bg-amber-100 p-1 rounded-full transition-colors cursor-pointer"
+                              title="Dismiss"
+                            >
+                              <X className="h-3.5 w-3.5" />
+                            </button>
+
                             <span className="text-xl leading-none mt-0.5">⚡</span>
-                            <div className="flex-1 min-w-0">
+                            <div className="flex-1 min-w-0 pr-5">
                               <p className="text-xs font-bold text-amber-800">Demo Account — Upgrade karo!</p>
                               <p className="text-[11px] text-amber-700 leading-snug mt-0.5">
                                 Edit Profile me jaake apna <strong>Email / Phone</strong> aur <strong>Password</strong> set karo taaki next time roll number ki jagah in se bhi login kar sako.
