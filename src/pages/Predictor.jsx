@@ -407,15 +407,37 @@ const Predictor = ({ colleges, studentInfo, handleUpdatePremiumStatus }) => {
       }
 
       // Query cutoff data spanning 2025 down to 2022 (IDs 18 to 6589)
-      let { data, error } = await supabase
-        .from('colleges')
-        .select('*')
-        .eq('domicile', formData.domicile)
-        .gte('id', 18)
-        .lte('id', 6589)
-        .in('category', categoriesToFetch);
+      // Attempt to load from localStorage cache first for 0ms instant execution
+      let data = null;
+      try {
+        const cached = localStorage.getItem('pk_cached_cutoffs');
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          data = parsed.filter(item => 
+            item.domicile === formData.domicile &&
+            item.id >= 18 &&
+            item.id <= 6589 &&
+            categoriesToFetch.includes(item.category)
+          );
+          console.log(`Loaded ${data.length} predictor cutoffs instantly from cache!`);
+        }
+      } catch (e) {
+        console.warn('LocalStorage predictor read error:', e);
+      }
 
-      if (error) throw error;
+      if (!data) {
+        // Fallback to Supabase network query
+        let { data: dbData, error } = await supabase
+          .from('colleges')
+          .select('*')
+          .eq('domicile', formData.domicile)
+          .gte('id', 18)
+          .lte('id', 6589)
+          .in('category', categoriesToFetch);
+
+        if (error) throw error;
+        data = dbData;
+      }
 
       // Filter by exam type DCECE (Regular) in memory (DCECE or null exam_type are regular DCECE cutoffs)
       const regularData = (data || []).filter(item => 

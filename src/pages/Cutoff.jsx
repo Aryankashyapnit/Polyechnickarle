@@ -239,7 +239,37 @@ const Cutoff = () => {
 
   useEffect(() => {
     const fetchCutoffs = async () => {
-      setLoading(true);
+      let cachedData = null;
+      let cacheTime = null;
+
+      try {
+        const localData = localStorage.getItem('pk_cached_cutoffs');
+        const localTime = localStorage.getItem('pk_cached_cutoffs_time');
+        if (localData && localTime) {
+          cachedData = JSON.parse(localData);
+          cacheTime = parseInt(localTime);
+        }
+      } catch (e) {
+        console.warn('LocalStorage is not available or corrupted:', e);
+      }
+
+      const now = Date.now();
+      const isCacheValid = cachedData && cacheTime && (now - cacheTime < 24 * 60 * 60 * 1000); // 24 hours
+
+      if (cachedData) {
+        // Load instantly from cache to provide 0ms UI startup
+        setCutoffData(cachedData);
+        setLoading(false);
+        
+        // If cache is less than 24 hours old, do not query network at all
+        if (isCacheValid) {
+          return;
+        }
+      } else {
+        setLoading(true);
+      }
+
+      // Revalidate / Fetch fresh data from Supabase in background
       try {
         let allData = [];
         let from = 0;
@@ -294,9 +324,23 @@ const Cutoff = () => {
           return (a.closing_rank || 0) - (b.closing_rank || 0);
         });
 
-        setCutoffData(allData);
+        // Avoid triggering React state updates if data is identical
+        const freshStr = JSON.stringify(allData);
+        const cachedStr = cachedData ? JSON.stringify(cachedData) : '';
+        
+        if (freshStr !== cachedStr) {
+          setCutoffData(allData);
+        }
+
+        // Cache the fresh data
+        try {
+          localStorage.setItem('pk_cached_cutoffs', freshStr);
+          localStorage.setItem('pk_cached_cutoffs_time', String(now));
+        } catch (e) {
+          console.warn('Failed to save cutoff data to localStorage:', e);
+        }
       } catch (err) {
-        console.error('Error fetching cutoffs:', err.message);
+        console.error('Error fetching fresh cutoffs:', err.message);
       } finally {
         setLoading(false);
       }

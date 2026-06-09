@@ -130,14 +130,35 @@ const Compare = ({ colleges, studentInfo }) => {
 
         const uniqueQueries = [...new Set(queries)];
 
-        const { data, error } = await supabase
-          .from('colleges')
-          .select('*')
-          .in('college_name', uniqueQueries)
-          .gte('id', 18)
-          .lte('id', 6589);
+        // Attempt to load from localStorage cache first for 0ms instant execution
+        let data = null;
+        try {
+          const cached = localStorage.getItem('pk_cached_cutoffs');
+          if (cached) {
+            const parsed = JSON.parse(cached);
+            data = parsed.filter(item => 
+              uniqueQueries.some(q => q.toLowerCase() === (item.college_name || '').toLowerCase()) &&
+              item.id >= 18 &&
+              item.id <= 6589
+            );
+            console.log(`Loaded ${data.length} comparison cutoffs instantly from cache!`);
+          }
+        } catch (e) {
+          console.warn('LocalStorage compare read error:', e);
+        }
 
-        if (error) throw error;
+        if (!data) {
+          // Fallback to Supabase network query
+          const { data: dbData, error } = await supabase
+            .from('colleges')
+            .select('*')
+            .in('college_name', uniqueQueries)
+            .gte('id', 18)
+            .lte('id', 6589);
+
+          if (error) throw error;
+          data = dbData;
+        }
         setCutoffsData(data || []);
       } catch (err) {
         console.error('Error fetching compare cutoffs:', err.message);
