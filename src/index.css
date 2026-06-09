@@ -56,3 +56,19 @@ body {
 .glow-primary {
   filter: drop-shadow(0 0 12px rgba(90, 36, 179, 0.25));
 }
+
+/* Sleek custom scrollbar for scrollable containers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

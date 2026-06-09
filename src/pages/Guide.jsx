@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { FileText, Calendar, CheckSquare, Sparkles, ChevronDown, ChevronUp, Download, Eye, AlertCircle, Award } from 'lucide-react';
+import { 
+  FileText, Calendar, CheckSquare, Sparkles, ChevronDown, ChevronUp, Download, 
+  Eye, AlertCircle, Award, Search, X, MapPin, Phone, Clock, User, ArrowRight, ShieldCheck 
+} from 'lucide-react';
 
 const Guide = () => {
   // Document Checklist State
@@ -431,76 +434,81 @@ const Guide = () => {
   ];
 
   return (
-    <main className="w-full py-12 font-inter">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="w-full py-8 md:py-12 font-inter selection:bg-brand-primary/20 selection:text-brand-primary">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* 1. Hero / Split Banner */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center mb-12">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
           {/* Left copy */}
           <div className="lg:col-span-7 space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-outfit bg-gradient-to-r from-slate-900 via-brand-primary to-purple-800 bg-clip-text text-transparent leading-tight tracking-tight">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 text-xs font-bold font-outfit uppercase tracking-wider select-none">
+              <Sparkles className="h-4 w-4 text-brand-tertiary animate-pulse" />
+              <span>DCECE Counselling Companion</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-outfit bg-gradient-to-r from-slate-900 via-brand-primary to-purple-800 bg-clip-text text-transparent leading-tight tracking-tight">
               Step-by-Step <br />
               Counselling Guide
             </h1>
             <p className="text-slate-500 font-medium text-sm sm:text-base leading-relaxed max-w-xl">
-              Your comprehensive roadmap for Polytechnic admissions at Karle. Navigate the registration process, choice filling, and seat allotment with technical precision and academic clarity.
+              Your comprehensive roadmap for Polytechnic admissions at Bihar. Navigate the registration process, choice filling, and seat allotment with technical precision and academic clarity.
             </p>
             <div className="flex flex-wrap gap-4 select-none">
-              <button className="bg-brand-primary hover:bg-brand-primary-hover text-white font-extrabold font-outfit px-5 py-3 rounded-lg text-sm flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-xs">
-                <Download className="h-4.5 w-4.5" />
+              <button className="bg-gradient-to-r from-brand-primary to-purple-650 hover:from-purple-750 hover:to-brand-primary text-white font-extrabold font-outfit px-5 py-3 rounded-xl text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md hover:shadow-lg">
+                <Download className="h-4 w-4" />
                 <span>Download PDF Guide</span>
               </button>
-              <button className="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 font-bold font-outfit px-5 py-3 rounded-lg text-sm flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer select-none">
-                <Eye className="h-4.5 w-4.5 text-slate-500" />
-                <span>View Schedule</span>
+              <button className="bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 hover:border-brand-primary/30 font-bold font-outfit px-5 py-3 rounded-xl text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer select-none">
+                <Eye className="h-4 w-4 text-slate-500" />
+                <span>View Complete Schedule</span>
               </button>
             </div>
           </div>
 
           {/* Right Image with certified overlap badge */}
           <div className="lg:col-span-5 flex justify-center relative">
-            <div className="relative w-full max-w-md aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+            <div className="relative w-full max-w-md aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-lg group">
+              <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-transparent transition-colors duration-300 z-10" />
               <img 
                 src="/computer_lab.jpg" 
                 alt="Modern computer lab center" 
-                className="w-full h-full object-cover brightness-95"
+                className="w-full h-full object-cover brightness-95 group-hover:scale-105 transition-transform duration-500"
               />
             </div>
             
             {/* Overlap Badge */}
-            <div className="absolute -bottom-4 left-6 sm:left-12 bg-brand-primary text-white border-2 border-white px-5 py-3 rounded-xl shadow-md flex items-center gap-2 select-none">
-              <Award className="h-5 w-5 text-brand-secondary" />
+            <div className="absolute -bottom-4 left-6 sm:left-12 bg-gradient-to-br from-brand-primary to-purple-700 text-white border-2 border-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 select-none animate-float-slow">
+              <Award className="h-6 w-6 text-brand-tertiary" />
               <div>
-                <span className="block text-[9px] font-black uppercase tracking-widest text-purple-200">CERTIFIED PROCESS</span>
-                <span className="font-extrabold font-outfit text-sm leading-none">2026-27 Batch</span>
+                <span className="block text-[8px] font-black uppercase tracking-widest text-purple-200">OFFICIAL PROCESS</span>
+                <span className="font-extrabold font-outfit text-xs leading-none">2026-27 Batch</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* 2. Counselling Timeline Timeline */}
-        <section className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10 select-none">
+        <section className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-sm select-none">
           <div className="flex items-center gap-2.5 mb-8 pb-4 border-b border-slate-100">
             <Calendar className="h-5 w-5 text-brand-primary" />
             <h3 className="text-lg font-bold font-outfit text-slate-800">Counselling Timeline</h3>
           </div>
 
           {/* Stepper Horizontal Scroll Container */}
-          <div className="overflow-x-auto pb-4">
+          <div className="overflow-x-auto pb-4 custom-scrollbar">
             <div className="min-w-[650px] relative flex justify-between px-6 pt-4">
               
-              {/* Purple connecting line */}
-              <div className="absolute left-[40px] right-[40px] top-[30px] h-[3px] bg-brand-primary/10 -z-10 rounded-full" />
+              {/* Connecting line */}
+              <div className="absolute left-[40px] right-[40px] top-[36px] h-[3px] bg-brand-primary/10 -z-10 rounded-full" />
               
               {stepsTimeline.map((step) => (
-                <div key={step.num} className="flex flex-col items-center text-center space-y-3 flex-1 relative">
+                <div key={step.num} className="flex flex-col items-center text-center space-y-3 flex-1 relative group cursor-pointer">
                   {/* Circle Step Number */}
-                  <div className="h-10 w-10 bg-brand-primary text-white border border-brand-primary/20 font-extrabold text-base flex items-center justify-center rounded-full shadow-xs font-outfit animate-fadeIn">
+                  <div className="h-10 w-10 bg-white hover:bg-brand-primary text-brand-primary hover:text-white border-2 border-brand-primary/30 hover:border-brand-primary font-black text-base flex items-center justify-center rounded-full shadow-sm transition-all duration-300 font-outfit">
                     {step.num}
                   </div>
                   {/* Labels */}
                   <div>
-                    <span className="block font-bold text-sm text-slate-850 font-outfit">{step.label}</span>
+                    <span className="block font-bold text-sm text-slate-800 font-outfit group-hover:text-brand-primary transition-colors">{step.label}</span>
                     <span className="block text-slate-500 font-semibold text-[11px] font-inter mt-0.5">{step.date}</span>
                   </div>
                 </div>
@@ -511,11 +519,11 @@ const Guide = () => {
         </section>
 
         {/* 3. Details Split Grid: Document Checklist vs Process Details */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Document Checklist */}
-          <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col justify-between h-full min-h-[500px]">
-            <div className="space-y-5">
+          <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between max-h-[560px]">
+            <div className="space-y-4">
               <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 select-none">
                 <CheckSquare className="h-5 w-5 text-brand-primary" />
                 <h3 className="text-lg font-bold font-outfit text-slate-800">Document Checklist</h3>
@@ -525,9 +533,9 @@ const Guide = () => {
               <div className="space-y-1.5 pb-2 select-none">
                 <div className="flex justify-between text-xs font-bold font-inter text-slate-500">
                   <span>Your Preparedness</span>
-                  <span className="text-brand-primary font-bold">{progressPercentage}% Ready</span>
+                  <span className="text-brand-primary font-extrabold">{progressPercentage}% Ready</span>
                 </div>
-                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden shadow-inner">
                   <div 
                     className="h-full bg-gradient-to-r from-brand-primary to-purple-500 rounded-full transition-all duration-300"
                     style={{ width: `${progressPercentage}%` }}
@@ -535,35 +543,35 @@ const Guide = () => {
                 </div>
               </div>
 
-              {/* Interactive checklist items */}
-              <div className="space-y-2.5">
+              {/* Interactive checklist items (Scrollable) */}
+              <div className="space-y-2 max-h-[320px] overflow-y-auto pr-1.5 custom-scrollbar">
                 {checklist.map((item) => (
                   <div
                     key={item.id}
                     onClick={() => toggleChecklist(item.id)}
-                    className={`flex items-start gap-3 p-3.5 border rounded-xl cursor-pointer transition-all duration-300 select-none ${
+                    className={`flex items-start gap-3 p-3 border rounded-xl cursor-pointer transition-all duration-200 select-none ${
                       item.checked 
-                        ? 'bg-slate-50 border-slate-150 opacity-60 text-slate-400' 
-                        : 'bg-slate-50/50 border-slate-200 text-slate-850 hover:border-brand-primary/30 hover:bg-slate-100/50'
+                        ? 'bg-slate-50/70 border-slate-150 opacity-60 text-slate-405' 
+                        : 'bg-slate-50/30 border-slate-200 text-slate-800 hover:border-brand-primary/30 hover:bg-slate-100/50'
                     }`}
                   >
                     {/* Custom Checkbox circle */}
-                    <div className={`h-5 w-5 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors ${
+                    <div className={`h-4.5 w-4.5 rounded border flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors ${
                       item.checked ? 'bg-brand-secondary border-brand-secondary text-white' : 'border-slate-300 bg-white'
                     }`}>
                       {item.checked && (
                         <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M5 13l4 4L19 7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M5 13l4 4L19 7" />
                         </svg>
                       )}
                     </div>
                     
                     {/* Labels */}
-                    <div>
-                      <h4 className={`text-sm font-extrabold font-outfit ${item.checked ? 'line-through text-slate-400' : 'text-slate-800'}`}>
+                    <div className="space-y-0.5">
+                      <h4 className={`text-xs font-bold font-outfit ${item.checked ? 'line-through text-slate-450' : 'text-slate-850'}`}>
                         {item.title}
                       </h4>
-                      <p className="text-slate-500 font-inter text-[12px] mt-0.5">{item.subtitle}</p>
+                      <p className="text-slate-500 font-inter text-[10px]">{item.subtitle}</p>
                     </div>
                   </div>
                 ))}
@@ -571,87 +579,101 @@ const Guide = () => {
             </div>
 
             {/* Scanning Warning banner */}
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-start gap-2.5 mt-8 select-none">
-              <AlertCircle className="h-4.5 w-4.5 text-brand-tertiary mt-0.5 flex-shrink-0" />
-              <p className="text-[12px] text-amber-800 font-inter leading-relaxed">
-                Ensure all documents are scanned in 200 DPI resolution for portal upload.
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 mt-4 select-none">
+              <AlertCircle className="h-4 w-4 text-brand-tertiary mt-0.5 flex-shrink-0" />
+              <p className="text-[11px] text-amber-800 font-inter leading-relaxed">
+                Ensure all documents are scanned in <strong>200 DPI resolution</strong> for portal upload. Keep originals ready for verification.
               </p>
             </div>
           </div>
 
           {/* Right Column: Process Details */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-6">
-            <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 select-none">
-              <Sparkles className="h-5 w-5 text-brand-primary" />
-              <h3 className="text-lg font-bold font-outfit text-slate-800">Process Details</h3>
-            </div>
+          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between max-h-[560px]">
+            <div className="space-y-5">
+              <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 select-none">
+                <Sparkles className="h-5 w-5 text-brand-primary" />
+                <h3 className="text-lg font-bold font-outfit text-slate-800">Process Details</h3>
+              </div>
 
-            {/* Stepper Details block stack */}
-            <div className="space-y-8">
-              
-              {/* Detail Step 1 */}
-              <div className="flex gap-4">
-                <div className="h-8 w-8 bg-brand-primary/10 text-brand-primary font-bold text-sm flex items-center justify-center rounded-full flex-shrink-0 font-outfit select-none">1</div>
-                <div className="space-y-3 flex-grow">
-                  <h4 className="font-extrabold font-outfit text-slate-800 text-base">Registration & Profile Verification</h4>
-                  <p className="text-slate-500 font-inter text-sm leading-relaxed">
-                    Candidates must create a login on the portal using their application number and date of birth. Ensure all personal details like name, parent's name, and category match your 10th-standard certificate exactly.
-                  </p>
-                  
-                  {/* Deadline Table */}
-                  <div className="grid grid-cols-2 gap-3 max-w-sm font-outfit select-none">
-                    <div className="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-center">
-                      <span className="block text-[9px] font-bold text-slate-550 uppercase">Deadline</span>
-                      <span className="text-slate-800 font-extrabold text-[13px] mt-0.5">July 15, 2026</span>
-                    </div>
-                    <div className="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-center">
-                      <span className="block text-[9px] font-bold text-slate-550 uppercase">Fee</span>
-                      <span className="text-slate-800 font-extrabold text-[13px] mt-0.5">₹500 (Non-refundable)</span>
+              {/* Stepper Details block stack */}
+              <div className="space-y-4 max-h-[440px] overflow-y-auto pr-1.5 custom-scrollbar">
+                
+                {/* Detail Step 1 */}
+                <div className="flex gap-4 border-l-2 border-brand-primary/20 pl-4 py-1 relative">
+                  <div className="absolute -left-[9px] top-1 h-4 w-4 bg-brand-primary rounded-full border-4 border-white flex items-center justify-center shadow-sm" />
+                  <div className="space-y-2 flex-grow">
+                    <h4 className="font-extrabold font-outfit text-slate-800 text-sm flex items-center justify-between">
+                      <span>1. Registration & Profile Setup</span>
+                      <span className="text-[9px] bg-slate-100 text-slate-500 font-bold px-2 py-0.5 rounded-full font-outfit">STEP 1</span>
+                    </h4>
+                    <p className="text-slate-500 font-inter text-xs leading-relaxed">
+                      Candidates must create a login on the portal using their application number and date of birth. Ensure all personal details like name, parent's name, and category match your 10th-standard certificate exactly.
+                    </p>
+                    
+                    {/* Deadline Table */}
+                    <div className="grid grid-cols-2 gap-3 max-w-xs font-outfit select-none">
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-2 text-center">
+                        <span className="block text-[8px] font-bold text-slate-400 uppercase">Deadline</span>
+                        <span className="text-slate-800 font-extrabold text-xs mt-0.5">July 15, 2026</span>
+                      </div>
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-2 text-center">
+                        <span className="block text-[8px] font-bold text-slate-400 uppercase">Fee</span>
+                        <span className="text-slate-800 font-extrabold text-xs mt-0.5">₹500 (Non-refundable)</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Detail Step 2 */}
-              <div className="flex gap-4">
-                <div className="h-8 w-8 bg-brand-primary/10 text-brand-primary font-bold text-sm flex items-center justify-center rounded-full flex-shrink-0 font-outfit select-none">2</div>
-                <div className="space-y-3 flex-grow">
-                  <h4 className="font-extrabold font-outfit text-slate-800 text-base">Priority Choice Filling</h4>
-                  <p className="text-slate-500 font-inter text-sm leading-relaxed">
-                    Select your preferred branches and campus locations. We recommend selecting at least 15 choices to maximize your allotment chances based on previous merit trends.
-                  </p>
-                  {/* Badges */}
-                  <div className="flex flex-wrap gap-2 text-[10px] font-bold uppercase select-none">
-                    <span className="bg-amber-50 text-brand-tertiary border border-amber-255 px-3 py-1.5 rounded font-outfit">CRITICAL STEP</span>
-                    <span className="bg-slate-50 text-slate-650 border border-slate-200 px-3 py-1.5 rounded font-outfit">Digital Signature Required</span>
+                {/* Detail Step 2 */}
+                <div className="flex gap-4 border-l-2 border-brand-primary/20 pl-4 py-1 relative">
+                  <div className="absolute -left-[9px] top-1 h-4 w-4 bg-brand-primary rounded-full border-4 border-white flex items-center justify-center shadow-sm" />
+                  <div className="space-y-2 flex-grow">
+                    <h4 className="font-extrabold font-outfit text-slate-800 text-sm flex items-center justify-between">
+                      <span>2. Priority Choice Filling</span>
+                      <span className="text-[9px] bg-brand-tertiary/10 text-brand-tertiary font-bold px-2 py-0.5 rounded-full font-outfit">CRITICAL</span>
+                    </h4>
+                    <p className="text-slate-500 font-inter text-xs leading-relaxed">
+                      Select your preferred branches and campus locations. We recommend selecting at least 15 choices to maximize your allotment chances based on previous merit trends.
+                    </p>
+                    <div className="flex flex-wrap gap-2 text-[9px] font-bold uppercase select-none">
+                      <span className="bg-amber-50 text-brand-tertiary border border-amber-200 px-2 py-1 rounded">CRITICAL STEP</span>
+                      <span className="bg-slate-50 text-slate-500 border border-slate-200 px-2 py-1 rounded">OTP VERIFICATION REQUIRED</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Detail Step 3 */}
-              <div className="flex gap-4">
-                <div className="h-8 w-8 bg-brand-primary/10 text-brand-primary font-bold text-sm flex items-center justify-center rounded-full flex-shrink-0 font-outfit select-none">3</div>
-                <div className="space-y-3 flex-grow">
-                  <h4 className="font-extrabold font-outfit text-slate-800 text-base">Verification & Freeze/Float</h4>
-                  <p className="text-slate-500 font-inter text-sm leading-relaxed">
-                    After allotment, you must choose to 'Freeze' (accept seat) or 'Float' (look for upgrade in next round). Physical document verification is mandatory for Frozen seats at the designated nodal centers.
-                  </p>
-                  <a href="#" className="inline-flex items-center gap-1.5 text-xs font-bold font-outfit text-brand-primary hover:text-brand-primary-hover self-start group">
-                    <span>View Nodal Centers</span>
-                    <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </a>
+                {/* Detail Step 3 */}
+                <div className="flex gap-4 border-l-2 border-brand-primary/20 pl-4 py-1 relative">
+                  <div className="absolute -left-[9px] top-1 h-4 w-4 bg-brand-primary rounded-full border-4 border-white flex items-center justify-center shadow-sm" />
+                  <div className="space-y-2 flex-grow">
+                    <h4 className="font-extrabold font-outfit text-slate-800 text-sm flex items-center justify-between">
+                      <span>3. Verification & Allotment Acceptance</span>
+                      <span className="text-[9px] bg-slate-100 text-slate-500 font-bold px-2 py-0.5 rounded-full font-outfit">STEP 3</span>
+                    </h4>
+                    <p className="text-slate-500 font-inter text-xs leading-relaxed">
+                      After allotment, choose 'Freeze' (accept seat) or 'Float' (look for upgrade). Physical document verification is mandatory for Frozen seats at the designated nodal centers.
+                    </p>
+                    <button 
+                      onClick={() => {
+                        const section = document.getElementById('nodal-centres-section');
+                        if (section) section.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold font-outfit text-brand-primary hover:text-brand-primary-hover self-start group cursor-pointer bg-transparent border-none p-0"
+                    >
+                      <span>View Nodal Centers Below</span>
+                      <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </button>
+                  </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
 
         </section>
 
         {/* Nodal Verification Centres Section */}
-        <section className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10 select-none">
+        <section id="nodal-centres-section" className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm select-none">
           <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-slate-100">
             <span className="text-xl">📍</span>
             <h3 className="text-lg font-bold font-outfit text-slate-800">Nodal Verification Centres & Interactive Maps</h3>
@@ -660,7 +682,7 @@ const Guide = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Left Column: List of Centres */}
             <div className="lg:col-span-5 flex flex-col">
-              <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Select Nodal Centre</span>
+              <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 font-outfit">Select Nodal Centre</span>
               
               {/* Search Bar for Centres */}
               <div className="relative mb-3.5">
@@ -730,28 +752,28 @@ const Guide = () => {
               <div className="md:w-1/2 flex flex-col justify-between space-y-4">
                 <div className="space-y-3">
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Official Centre Name</span>
+                    <span className="text-[10px] font-bold text-slate-450 uppercase tracking-wider block">Official Centre Name</span>
                     <h4 className="font-black font-outfit text-slate-900 text-base leading-tight">
                       {activeCentreObj.name}
                     </h4>
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Address</span>
-                    <p className="text-xs text-slate-600 font-inter leading-relaxed">
+                    <span className="text-[10px] font-bold text-slate-450 uppercase tracking-wider block">Address</span>
+                    <p className="text-xs text-slate-650 font-inter leading-relaxed">
                       {activeCentreObj.address}
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Nodal Officer</span>
+                      <span className="text-[10px] font-bold text-slate-455 uppercase tracking-wider block">Nodal Officer</span>
                       <span className="font-bold text-xs text-slate-800 font-outfit">
                         {activeCentreObj.officer}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Contact Phone</span>
+                      <span className="text-[10px] font-bold text-slate-455 uppercase tracking-wider block">Contact Phone</span>
                       <a href={`tel:${activeCentreObj.phone}`} className="font-bold text-xs text-brand-primary font-outfit hover:underline">
                         {activeCentreObj.phone}
                       </a>
@@ -759,7 +781,7 @@ const Guide = () => {
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Reporting Timings</span>
+                    <span className="text-[10px] font-bold text-slate-455 uppercase tracking-wider block">Reporting Timings</span>
                     <span className="font-bold text-xs text-emerald-700 bg-emerald-50 border border-emerald-150 px-2 py-0.5 rounded inline-block font-outfit mt-1">
                       ⏱️ {activeCentreObj.schedule}
                     </span>
@@ -819,7 +841,7 @@ const Guide = () => {
                   </button>
                   
                   {isOpen && (
-                    <div className="px-5 pb-5 pt-2 text-slate-600 font-inter text-sm leading-relaxed border-t border-slate-100 bg-slate-50/50 animate-fadeIn">
+                    <div className="px-5 pb-5 pt-2 text-slate-650 font-inter text-sm leading-relaxed border-t border-slate-100 bg-slate-50/50 animate-fadeIn">
                       {faq.a}
                     </div>
                   )}
