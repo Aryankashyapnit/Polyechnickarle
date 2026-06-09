@@ -10,7 +10,7 @@ import Compare from './pages/Compare';
 import AdminDashboard from './pages/AdminDashboard';
 import LoginGate from './pages/LoginGate';
 import Forum from './pages/Forum';
-import { supabase } from './supabaseClient';
+import { supabase, fetchAndSortCutoffsParallel } from './supabaseClient';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -243,44 +243,7 @@ function App() {
         }
         
         console.log("Preloading cutoff database in background...");
-        let allData = [];
-        let from = 0;
-        let hasMore = true;
-        const limit = 1000;
-
-        while (hasMore) {
-          const { data, error } = await supabase
-            .from('colleges')
-            .select('*')
-            .range(from, from + limit - 1)
-            .order('id', { ascending: true });
-
-          if (error) throw error;
-
-          if (data && data.length > 0) {
-            allData = [...allData, ...data];
-            if (data.length < limit) {
-              hasMore = false;
-            } else {
-              from += limit;
-            }
-          } else {
-            hasMore = false;
-          }
-        }
-
-        // Sort data by College -> Branch -> Category -> Closing Rank
-        allData.sort((a, b) => {
-          const nameA = (a.college_name || '').trim().toLowerCase();
-          const nameB = (b.college_name || '').trim().toLowerCase();
-          if (nameA !== nameB) return nameA.localeCompare(nameB);
-          
-          const branchA = (a.branch || '').trim().toLowerCase();
-          const branchB = (b.branch || '').trim().toLowerCase();
-          if (branchA !== branchB) return branchA.localeCompare(branchB);
-
-          return (a.closing_rank || 0) - (b.closing_rank || 0);
-        });
+        const allData = await fetchAndSortCutoffsParallel();
 
         localStorage.setItem('pk_cached_cutoffs', JSON.stringify(allData));
         localStorage.setItem('pk_cached_cutoffs_time', String(now));

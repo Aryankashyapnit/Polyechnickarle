@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Search, SlidersHorizontal, FileSpreadsheet, ArrowRight, LineChart, GraduationCap, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { supabase } from '../supabaseClient';
+import { supabase, fetchAndSortCutoffsParallel } from '../supabaseClient';
 
 const getYearFromId = (id) => {
   if (id >= 18 && id <= 2327) return 2025;
@@ -46,25 +46,7 @@ const getCategoryBadge = (category) => {
   );
 };
 
-const getBranchScore = (branchName) => {
-  const b = String(branchName || '').toLowerCase();
-  if (b.includes('civil')) return 1;
-  if (b.includes('mechanical')) return 2;
-  if (b.includes('electrical')) return 3;
-  if (b.includes('electronics')) return 4;
-  if (b.includes('computer') || b.includes('cs')) return 5;
-  if (b.includes('information') || b.includes('it')) return 6;
-  if (b.includes('agri')) return 7;
-  if (b.includes('ai') || b.includes('machine')) return 8;
-  if (b.includes('auto')) return 9;
-  if (b.includes('textile')) return 10;
-  if (b.includes('leather')) return 11;
-  if (b.includes('ceramic')) return 12;
-  if (b.includes('print')) return 13;
-  if (b.includes('fire')) return 14;
-  if (b.includes('mining')) return 15;
-  return 99; // fallback
-};
+
 
 const normalizeBranchName = (branchName) => {
   const b = String(branchName || '').toLowerCase().trim();
@@ -162,17 +144,7 @@ const normalizeBranchName = (branchName) => {
     .join(' ');
 };
 
-const getCategorySortScore = (category) => {
-  const cat = String(category || '').trim().toUpperCase();
-  if (cat === 'UR' || cat === 'E-UR') return 1;
-  if (cat === 'BC' || cat === 'E-BC') return 2;
-  if (cat === 'EBC' || cat === 'E-EBC') return 3;
-  if (cat === 'SC' || cat === 'E-SC') return 4;
-  if (cat === 'ST' || cat === 'E-ST') return 5;
-  if (cat === 'EWS') return 6;
-  if (cat === 'RCG') return 7;
-  return 8; // DQ, SMQ, others
-};
+
 
 const Cutoff = () => {
   const [cutoffData, setCutoffData] = useState([]);
@@ -269,60 +241,9 @@ const Cutoff = () => {
         setLoading(true);
       }
 
-      // Revalidate / Fetch fresh data from Supabase in background
+      // Revalidate / Fetch fresh data from Supabase in background in parallel
       try {
-        let allData = [];
-        let from = 0;
-        let hasMore = true;
-        const limit = 1000;
-
-        while (hasMore) {
-          const { data, error } = await supabase
-            .from('colleges')
-            .select('*')
-            .range(from, from + limit - 1)
-            .order('id', { ascending: true });
-
-          if (error) throw error;
-
-          if (data && data.length > 0) {
-            allData = [...allData, ...data];
-            if (data.length < limit) {
-              hasMore = false;
-            } else {
-              from += limit;
-            }
-          } else {
-            hasMore = false;
-          }
-        }
-
-        // Sort allData by College -> Branch Score -> Category Score -> Closing Rank
-        allData.sort((a, b) => {
-          // 1. Sort by College Name
-          const nameA = (a.college_name || '').trim().toLowerCase();
-          const nameB = (b.college_name || '').trim().toLowerCase();
-          if (nameA !== nameB) {
-            return nameA.localeCompare(nameB);
-          }
-
-          // 2. Sort by Branch Score
-          const branchScoreA = getBranchScore(a.branch);
-          const branchScoreB = getBranchScore(b.branch);
-          if (branchScoreA !== branchScoreB) {
-            return branchScoreA - branchScoreB;
-          }
-
-          // 3. Sort by Category Score (UR -> BC -> EBC -> etc.)
-          const catScoreA = getCategorySortScore(a.category);
-          const catScoreB = getCategorySortScore(b.category);
-          if (catScoreA !== catScoreB) {
-            return catScoreA - catScoreB;
-          }
-
-          // 4. Sort by Closing Rank
-          return (a.closing_rank || 0) - (b.closing_rank || 0);
-        });
+        const allData = await fetchAndSortCutoffsParallel();
 
         // Avoid triggering React state updates if data is identical
         const freshStr = JSON.stringify(allData);
