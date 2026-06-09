@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #5A24B3;
+  --color-brand-primary-hover: #431a8a;
+  --color-brand-secondary: #00B388;
+  --color-brand-secondary-hover: #009672;
+  --color-brand-tertiary: #F39C12;
+  --color-brand-tertiary-hover: #d6840d;
+  --color-brand-neutral: #64748B;
+  --color-bg-canvas: #f8fafc;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg-canvas);
+  color: #1e293b; /* slate-800 */
+  font-family: var(--font-sans);
+}
+
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+
+.font-inter {
+  font-family: var(--font-sans);
+}
+
+/* Dot grid background as seen in the mockup design patterns */
+.bg-dot-grid {
+  background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+/* Custom animations for premium visual effects */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.05); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.glow-primary {
+  filter: drop-shadow(0 0 12px rgba(90, 36, 179, 0.25));
+}
