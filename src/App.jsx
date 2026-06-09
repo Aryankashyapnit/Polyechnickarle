@@ -11,6 +11,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import LoginGate from './pages/LoginGate';
 import Forum from './pages/Forum';
 import { supabase, fetchAndSortCutoffsParallel } from './supabaseClient';
+import ThemeCustomizer from './components/ThemeCustomizer';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -348,6 +349,7 @@ function App() {
           {renderPage()}
         </div>
         <Footer setCurrentPage={handlePageChange} />
+        <ThemeCustomizer />
       </div>
     </div>
   );

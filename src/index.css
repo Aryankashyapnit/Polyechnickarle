@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme {
+:root {
   --color-brand-primary: #5A24B3;
   --color-brand-primary-hover: #431a8a;
   --color-brand-secondary: #00B388;
@@ -10,13 +10,75 @@
   --color-brand-neutral: #64748B;
   --color-bg-canvas: #f8fafc;
   
+  --text-slate-950: #020617;
+  --text-slate-900: #0f172a;
+  --text-slate-855: #0f172a;
+  --text-slate-805: #1e293b;
+  --text-slate-800: #1e293b;
+  --text-slate-700: #334155;
+  --text-slate-655: #475569;
+  --text-slate-650: #475569;
+  --text-slate-600: #475569;
+  --text-slate-555: #475569;
+  --text-slate-505: #64748b;
+  --text-slate-500: #64748b;
+  --text-slate-450: #94a3b8;
+  --text-slate-400: #94a3b8;
+  --text-slate-350: #cbd5e1;
+  --text-slate-300: #cbd5e1;
+  --text-slate-205: #e2e8f0;
+  --text-slate-200: #e2e8f0;
+  --text-slate-150: #f1f5f9;
+  --text-slate-100: #f1f5f9;
+  --text-slate-50: #f8fafc;
+
+  --border-glass: rgba(255, 255, 255, 0.5);
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --glow-shadow: rgba(90, 36, 179, 0.15);
+  --bg-input: #ffffff;
+  --border-input: #cbd5e1;
+  --bg-input-focus: #ffffff;
+}
+
+@theme {
+  --color-brand-primary: var(--color-brand-primary);
+  --color-brand-primary-hover: var(--color-brand-primary-hover);
+  --color-brand-secondary: var(--color-brand-secondary);
+  --color-brand-secondary-hover: var(--color-brand-secondary-hover);
+  --color-brand-tertiary: var(--color-brand-tertiary);
+  --color-brand-tertiary-hover: var(--color-brand-tertiary-hover);
+  --color-brand-neutral: var(--color-brand-neutral);
+  --color-bg-canvas: var(--color-bg-canvas);
+
+  --color-slate-950: var(--text-slate-950);
+  --color-slate-900: var(--text-slate-900);
+  --color-slate-855: var(--text-slate-855);
+  --color-slate-805: var(--text-slate-805);
+  --color-slate-800: var(--text-slate-800);
+  --color-slate-700: var(--text-slate-700);
+  --color-slate-655: var(--text-slate-655);
+  --color-slate-650: var(--text-slate-650);
+  --color-slate-600: var(--text-slate-600);
+  --color-slate-555: var(--text-slate-555);
+  --color-slate-505: var(--text-slate-505);
+  --color-slate-500: var(--text-slate-500);
+  --color-slate-450: var(--text-slate-450);
+  --color-slate-400: var(--text-slate-400);
+  --color-slate-350: var(--text-slate-350);
+  --color-slate-300: var(--text-slate-300);
+  --color-slate-205: var(--text-slate-205);
+  --color-slate-200: var(--text-slate-200);
+  --color-slate-150: var(--text-slate-150);
+  --color-slate-100: var(--text-slate-100);
+  --color-slate-50: var(--text-slate-50);
+  
   --font-sans: 'Inter', sans-serif;
   --font-outfit: 'Outfit', sans-serif;
 }
 
 body {
   background-color: var(--color-bg-canvas);
-  color: #1e293b; /* slate-800 */
+  color: var(--text-slate-900);
   font-family: var(--font-sans);
 }
 
@@ -84,10 +146,10 @@ body {
 
 /* Glassmorphism & premium UI overrides */
 .glass-premium {
-  background: rgba(255, 255, 255, 0.7) !important;
+  background: var(--bg-glass) !important;
   backdrop-filter: blur(14px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(14px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid var(--border-glass) !important;
 }
 
 .glass-dark-premium {
@@ -97,16 +159,21 @@ body {
 }
 
 .input-premium {
-  background: #ffffff !important;
-  border: 1.5px solid #cbd5e1 !important;
+  background: var(--bg-input) !important;
+  border: 1.5px solid var(--border-input) !important;
+  color: var(--text-slate-900) !important;
   border-radius: 12px !important;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
   outline: none !important;
 }
 .input-premium:focus {
-  border-color: #5A24B3 !important;
-  box-shadow: 0 0 0 4px rgba(90, 36, 179, 0.15) !important;
-  background: #ffffff !important;
+  border-color: var(--color-brand-primary) !important;
+  box-shadow: 0 0 0 4px var(--glow-shadow) !important;
+  background: var(--bg-input-focus) !important;
+}
+
+/* Global Transition for Theme Morphing */
+body, .glass-premium, .input-premium, main, header, footer, card, table, td, th, select, input, option, button {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease !important;
 }
 
 /* Pulsing animated border tag */
@@ -136,4 +203,145 @@ body {
 
 .animate-mesh-drift {
   animation: mesh-drift 12s ease-in-out infinite;
+}
+
+/* ==========================================================
+   THEME STYLESHEET OVERRIDES
+   ========================================================== */
+
+/* 1. Cyber Midnight (Electric Dark Mode) */
+.theme-cyber-midnight {
+  --color-bg-canvas: #090d16 !important;
+  --text-slate-950: #f8fafc !important;
+  --text-slate-900: #f8fafc !important;
+  --text-slate-855: #f1f5f9 !important;
+  --text-slate-805: #f1f5f9 !important;
+  --text-slate-800: #cbd5e1 !important;
+  --text-slate-700: #cbd5e1 !important;
+  --text-slate-655: #94a3b8 !important;
+  --text-slate-650: #94a3b8 !important;
+  --text-slate-600: #94a3b8 !important;
+  --text-slate-555: #94a3b8 !important;
+  --text-slate-505: #94a3b8 !important;
+  --text-slate-500: #64748b !important;
+  --text-slate-450: #64748b !important;
+  --text-slate-400: #475569 !important;
+  --text-slate-350: #334155 !important;
+  --text-slate-300: #334155 !important;
+  --text-slate-205: #1e293b !important;
+  --text-slate-200: #1e293b !important;
+  --text-slate-150: #111827 !important;
+  --text-slate-100: #111827 !important;
+  --text-slate-55: #090d16 !important;
+  --text-slate-50: #090d16 !important;
+  
+  --color-brand-primary: #8b5cf6 !important;
+  --color-brand-primary-hover: #7c3aed !important;
+  --color-brand-secondary: #06b6d4 !important;
+  --color-brand-secondary-hover: #0891b2 !important;
+
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --bg-glass: rgba(13, 20, 35, 0.75);
+  --glow-shadow: rgba(139, 92, 246, 0.25);
+  --bg-input: #0d1321;
+  --border-input: #1e293b;
+  --bg-input-focus: #070a12;
+}
+
+.theme-cyber-midnight .bg-white {
+  background-color: #131c2e !important;
+  border-color: #1e293b !important;
+}
+
+.theme-cyber-midnight select option {
+  background-color: #131c2e !important;
+  color: #f8fafc !important;
+}
+
+/* 2. Sunset Gold (Warm Comfort Mode) */
+.theme-sunset-gold {
+  --color-bg-canvas: #faf6eb !important;
+  --text-slate-950: #1c1917 !important;
+  --text-slate-900: #27272a !important;
+  --text-slate-855: #3f3f46 !important;
+  --text-slate-805: #3f3f46 !important;
+  --text-slate-800: #52525b !important;
+  --text-slate-700: #52525b !important;
+  --text-slate-655: #71717a !important;
+  --text-slate-650: #71717a !important;
+  --text-slate-600: #71717a !important;
+  --text-slate-555: #71717a !important;
+  --text-slate-505: #a1a1aa !important;
+  --text-slate-500: #a1a1aa !important;
+  --text-slate-450: #d4d4d8 !important;
+  --text-slate-400: #d4d4d8 !important;
+  --text-slate-350: #e4e4e7 !important;
+  --text-slate-300: #e4e4e7 !important;
+  --text-slate-205: #f4f4f5 !important;
+  --text-slate-200: #f4f4f5 !important;
+  --text-slate-150: #fafaf9 !important;
+  --text-slate-100: #fafaf9 !important;
+  --text-slate-55: #fffbeb !important;
+  --text-slate-50: #fffbeb !important;
+  
+  --color-brand-primary: #d97706 !important;
+  --color-brand-primary-hover: #b45309 !important;
+  --color-brand-secondary: #059669 !important;
+  --color-brand-secondary-hover: #047857 !important;
+
+  --border-glass: rgba(217, 119, 6, 0.15);
+  --bg-glass: rgba(255, 253, 249, 0.8);
+  --glow-shadow: rgba(217, 119, 6, 0.15);
+  --bg-input: #ffffff;
+  --border-input: #e4dec9;
+  --bg-input-focus: #fffdf9;
+}
+
+.theme-sunset-gold .bg-white {
+  background-color: #fffdf9 !important;
+  border-color: #f1ebd9 !important;
+}
+
+/* 3. Emerald Luxury (Green Velvet Mode) */
+.theme-emerald-luxury {
+  --color-bg-canvas: #ecfdf5 !important;
+  --text-slate-950: #064e3b !important;
+  --text-slate-900: #064e3b !important;
+  --text-slate-855: #0f766e !important;
+  --text-slate-805: #0f766e !important;
+  --text-slate-800: #115e59 !important;
+  --text-slate-700: #115e59 !important;
+  --text-slate-655: #0d9488 !important;
+  --text-slate-650: #0d9488 !important;
+  --text-slate-600: #0d9488 !important;
+  --text-slate-555: #0d9488 !important;
+  --text-slate-505: #14b8a6 !important;
+  --text-slate-500: #2dd4bf !important;
+  --text-slate-450: #5eead4 !important;
+  --text-slate-400: #5eead4 !important;
+  --text-slate-350: #99f6e4 !important;
+  --text-slate-300: #99f6e4 !important;
+  --text-slate-205: #ccfbf1 !important;
+  --text-slate-200: #ccfbf1 !important;
+  --text-slate-150: #f0fdfa !important;
+  --text-slate-100: #f0fdfa !important;
+  --text-slate-55: #ecfdf5 !important;
+  --text-slate-50: #ecfdf5 !important;
+  
+  --color-brand-primary: #059669 !important;
+  --color-brand-primary-hover: #047857 !important;
+  --color-brand-secondary: #0f766e !important;
+  --color-brand-secondary-hover: #115e59 !important;
+
+  --border-glass: rgba(5, 150, 105, 0.15);
+  --bg-glass: rgba(246, 253, 250, 0.75);
+  --glow-shadow: rgba(5, 150, 105, 0.15);
+  --bg-input: #ffffff;
+  --border-input: #a7f3d0;
+  --bg-input-focus: #f0fdf4;
+}
+
+.theme-emerald-luxury .bg-white {
+  background-color: #f6fdfa !important;
+  border-color: #d1fae5 !important;
 }
